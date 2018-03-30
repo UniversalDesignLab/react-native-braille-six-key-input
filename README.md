@@ -6,11 +6,11 @@ _To have this render your input as Braille, you will need to import the [SimBrai
 **To Install**: 
 
 ```bash
-$ npm install react-braille-six-key-input
+$ npm install react-native-braille-six-key-input
 ```
 
 **To Install & Save as a Dependency in your `package.json`**:
 
 ```bash
-$ npm install react-braille-six-key-input --save
+$ npm install react-native-braille-six-key-input --save
 ```
