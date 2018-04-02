@@ -68,11 +68,21 @@ const BrailleInput = (props) => {
   )
 }
 
+const Result = (props) => {
+  return (
+    <View style={styles.resultContainer}>
+      <Text style={{ alignSelf: 'center', fontSize: 24, width: '35%' }}>
+        {props.label}
+      </Text>
+    </View>
+  )
+}
+
 const SixKeyInput = ({ value, onChange, answer, submitted }) => {
   value = _.isNil(value) ? [] : value
 
-  _onChangeHandler = () => {
-    console.log(`Button Pressed!`)
+  _onChangeHandler = (props) => {
+    return console.log(`${props.label} Button Pressed!`)
   }
 
   /*   let shadow = {}
@@ -83,42 +93,45 @@ const SixKeyInput = ({ value, onChange, answer, submitted }) => {
 
   const choices = [1, 2, 3, 4, 5, 6]
   return (
-    <View style={styles.grandparentContainer}>
-      {/* <Text style={{ marginLeft: '7%' }}>Answer:</Text> */}
-      <View style={styles.parentContainer}>
-        <View style={styles.rowContainer}>
-          {/* this is where {[styles.rowContainer, shadow]} used t'be */}
-          <View style={styles.colContainer}>
-            {choices.slice(0, 3).map((choice, i) => <BrailleInput
-              label={choice}
-              selected={value.includes(choice)}
-              onChange={_onChangeHandler}
-              answer={answer}
-              value={value}
-              submitted={submitted}
-              key={i}
-            />)}
+    <View style={{ flex: 1, alignItems: 'center', }}>
+      <Result />
+      <View style={styles.grandparentContainer}>
+        {/* <Text style={{ marginLeft: '7%' }}>Answer:</Text> */}
+        <View style={styles.parentContainer}>
+          <View style={styles.rowContainer}>
+            {/* this is where {[styles.rowContainer, shadow]} used t'be */}
+            <View style={styles.colContainer}>
+              {choices.slice(0, 3).map((choice, i) => <BrailleInput
+                label={choice}
+                selected={value.includes(choice)}
+                onChange={_onChangeHandler}
+                answer={answer}
+                value={value}
+                submitted={submitted}
+                key={i}
+              />)}
+            </View>
+            <View style={styles.colContainer}>
+              {choices.slice(3, 6).map((choice, i) => <BrailleInput
+                label={choice}
+                selected={value.includes(choice)}
+                onChange={_onChangeHandler}
+                answer={answer}
+                value={value}
+                submitted={submitted}
+                key={i}
+              />)}
+            </View>
           </View>
-          <View style={styles.colContainer}>
-            {choices.slice(3, 6).map((choice, i) => <BrailleInput
-              label={choice}
-              selected={value.includes(choice)}
-              onChange={_onChangeHandler}
-              answer={answer}
-              value={value}
-              submitted={submitted}
-              key={i}
-            />)}
-          </View>
+          <TouchableOpacity
+            onPress={_onChangeHandler}
+            onChange={_onChangeHandler}
+          >
+            <View style={styles.spaceButton}>
+              <Text style={styles.spaceButtonText}>SPACE</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          onPress={_onChangeHandler}
-          onChange={_onChangeHandler}
-        >
-          <View style={styles.spaceButton}>
-            <Text style={styles.spaceButtonText}>SPACE</Text>
-          </View>
-        </TouchableOpacity>
       </View>
     </View>
   )
@@ -133,14 +146,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  resultContainer: {
+    borderColor: COLORS.black,
+    borderRadius: 10,
+    borderWidth: 2,
+    marginTop: 60,
+    minWidth: 125,
+    paddingBottom: 5,
+    paddingLeft: 30,
+    paddingRight: 30,
+    paddingTop: 30,
+  },
+  resultText: {
+    alignSelf: 'center',
+    fontSize: 24,
+    width: '35%',
+  },
   grandparentContainer: {
     alignContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#82E0AA',
+    backgroundColor: '#F7DC6F',
     justifyContent: 'center',
-    marginTop: 200,
+    marginTop: 70,
   },
   parentContainer: {
+    justifyContent: 'center',
     alignContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.75)',
@@ -150,8 +180,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 12,
     justifyContent: 'center',
     marginBottom: 12,
-    padding: 20,
-    width: '90%',
+    minHeight: 500,
+    padding: 15,
+    width: 325,
   },
   rowContainer: {
     flexDirection: 'row',
