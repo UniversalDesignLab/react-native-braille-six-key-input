@@ -4,60 +4,13 @@ import { Animated, Dimensions, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 import { theme, COLORS, brailleCharacters } from "./config"
 import _ from "lodash"
 
-/* export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.textStyle}>Open up App.js to start working on your app!</Text>
-        <Text style={styles.altTextStyle}>Shake your phone to open the developer menu.</Text>
-        <Text style={styles.textStyle}>Changes you make will automatically reload.</Text>
-      </View>
-    );
-  }
-} */
-
 const BrailleInput = (props) => {
   let backgroundColor = COLORS.white
-  /* const correctAnswer = _.isEqual(brailleCharacters[props.answer].sort(), props.value.sort())
-
-  if (props.selected && props.submitted && correctAnswer) {
-    backgroundColor = COLORS.green
-  } else if (props.selected && props.submitted && !correctAnswer) {
-    backgroundColor = COLORS.red
-  } else if (props.selected) {
-    backgroundColor = COLORS.blue
-  }
-  const textColor = backgroundColor === COLORS.white ? COLORS.black : COLORS.white */
-
-  _handleButtonPress = () => {
-    const cellValues = _.cloneDeep(props.value)
-    const choice = props.label
-
-    // need to toggle on/off the value by adding/removing the chocie in cellValues
-    if (cellValues.includes(choice)) {
-      _.pull(cellValues, choice) // remove choice from array
-    } else {
-      cellValues.push(choice)
-    }
-
-    props.onChange(cellValues)
-  }
-
 
   return (
     <TouchableOpacity
       onPress={() => {
-        const cellValues = _.cloneDeep(props.value)
-        const choice = props.label
-
-        // need to toggle on/off the value by adding/removing the chocie in cellValues
-        if (cellValues.includes(choice)) {
-          _.pull(cellValues, choice) // remove choice from array
-        } else {
-          cellValues.push(choice)
-        }
-
-        props.onChange(cellValues)
+        props.onChange(props.label)
       }
       }
     >
@@ -72,90 +25,100 @@ const Result = (props) => {
   return (
     <View style={styles.resultContainer}>
       <Text style={{ alignSelf: 'center', fontSize: 24, width: '35%' }}>
-        {props.label}
+        {props.value}
       </Text>
     </View>
   )
 }
 
-const SixKeyInput = ({ value, onChange, answer, submitted }) => {
-  value = _.isNil(value) ? [] : value
+const SpaceButton = (props) => {
 
-  _onChangeHandler = (props) => {
-    return console.log(`${props.label} Button Pressed!`)
-  }
+  return (
+    <TouchableOpacity
+      onPress={() => {
+        props.onChange('SPACE')
+      }
+      }
+    >
+      <View style={styles.spaceButtonStyle}>
+        <Text style={styles.spaceButtonText}>SPACE</Text>
+      </View>
+    </TouchableOpacity>
+  )
+}
 
-  /*   let shadow = {}
-    if (submitted) {
-      const correctAnswer = _.isEqual(brailleCharacters[answer].sort(), value.sort())
-      shadow = correctAnswer ? styles.answerCorrect : styles.answerIncorrect
-    } */
+const SixKeyInput = ({ onChange }) => {
 
   const choices = [1, 2, 3, 4, 5, 6]
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', }}>
-      <Result />
-      <View style={styles.grandparentContainer}>
-        {/* <Text style={{ marginLeft: '7%' }}>Answer:</Text> */}
-        <View style={styles.parentContainer}>
-          <View style={styles.rowContainer}>
-            {/* this is where {[styles.rowContainer, shadow]} used t'be */}
-            <View style={styles.colContainer}>
-              {choices.slice(0, 3).map((choice, i) => <BrailleInput
-                label={choice}
-                selected={value.includes(choice)}
-                onChange={_onChangeHandler}
-                answer={answer}
-                value={value}
-                submitted={submitted}
-                key={i}
-              />)}
-            </View>
-            <View style={styles.colContainer}>
-              {choices.slice(3, 6).map((choice, i) => <BrailleInput
-                label={choice}
-                selected={value.includes(choice)}
-                onChange={_onChangeHandler}
-                answer={answer}
-                value={value}
-                submitted={submitted}
-                key={i}
-              />)}
-            </View>
+    <View style={styles.grandparentContainer}>
+      {/* <Text style={{ marginLeft: '7%' }}>Answer:</Text> */}
+      <View style={styles.parentContainer}>
+        <View style={styles.rowContainer}>
+          {/* this is where {[styles.rowContainer, shadow]} used t'be */}
+          <View style={styles.colContainer}>
+            {choices.slice(0, 3).map((choice, i) => <BrailleInput
+              label={choice}
+              onChange={onChange}
+              key={i}
+            />)}
           </View>
-          <TouchableOpacity
-            onPress={_onChangeHandler}
-            onChange={_onChangeHandler}
-          >
-            <View style={styles.spaceButton}>
-              <Text style={styles.spaceButtonText}>SPACE</Text>
-            </View>
-          </TouchableOpacity>
+          <View style={styles.colContainer}>
+            {choices.slice(3, 6).map((choice, i) => <BrailleInput
+              label={choice}
+              onChange={onChange}
+              key={i}
+            />)}
+          </View>
         </View>
+        <SpaceButton
+          onChange={onChange}
+        />
       </View>
     </View>
   )
 }
 
-export default SixKeyInput
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      buttonId: ''
+    }
+  }
+
+  _onChangeHandler = (buttonId) => {
+    this.setState({ buttonId })
+    console.log(`${buttonId} Button Pressed!`)
+  }
+
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', }}>
+        <Result
+          value={this.state.buttonId}
+        />
+        <SixKeyInput
+          onChange={this._onChangeHandler} />
+      </View>
+    )
+  }
+}
+
+export default App
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#99ffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   resultContainer: {
     borderColor: COLORS.black,
     borderRadius: 10,
     borderWidth: 2,
-    marginTop: 60,
+    marginTop: 55,
     minWidth: 125,
-    paddingBottom: 5,
+    paddingBottom: 10,
     paddingLeft: 30,
     paddingRight: 30,
-    paddingTop: 30,
+    paddingTop: 10,
   },
   resultText: {
     alignSelf: 'center',
@@ -165,7 +128,7 @@ const styles = StyleSheet.create({
   grandparentContainer: {
     alignContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F7DC6F',
+    /* backgroundColor: '#F7DC6F', */
     justifyContent: 'center',
     marginTop: 70,
   },
@@ -176,10 +139,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.75)',
     borderWidth: 2,
     borderColor: COLORS.black,
-    borderTopLeftRadius: 12,
-    borderTopRightRadius: 12,
+    borderTopLeftRadius: 16,
+    borderTopRightRadius: 16,
     justifyContent: 'center',
-    marginBottom: 12,
+    /* marginBottom: 12, */
     minHeight: 500,
     padding: 15,
     width: 325,
@@ -220,7 +183,7 @@ const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: 48,
   },
-  spaceButton: {
+  spaceButtonStyle: {
     alignItems: 'flex-end',
     borderColor: COLORS.grey,
     borderRadius: 10,
@@ -242,15 +205,5 @@ const styles = StyleSheet.create({
   answerIncorrect: {
     // boxShadow: 'inset 0 0 3px red'
     borderColor: COLORS.red,
-  },
-  textStyle: {
-    color: '#000099',
-    fontSize: 24,
-    fontWeight: '700',
-  },
-  altTextStyle: {
-    color: '#990000',
-    fontSize: 30,
-    fontWeight: '700',
   },
 });
