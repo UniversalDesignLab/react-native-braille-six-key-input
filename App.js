@@ -49,9 +49,8 @@ const SpaceButton = (props) => {
 
 const SixKeyInput = ({ onChange }) => {
 
-  // value = _.isNil(value) ? [] : value
-
   const choices = [1, 2, 3, 4, 5, 6]
+
   return (
     <View style={styles.grandparentContainer}>
       {/* <Text style={{ marginLeft: '7%' }}>Answer:</Text> */}
@@ -110,12 +109,6 @@ class App extends Component {
 export default App
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#99ffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   resultContainer: {
     borderColor: COLORS.black,
     borderRadius: 10,
@@ -135,7 +128,7 @@ const styles = StyleSheet.create({
   grandparentContainer: {
     alignContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F7DC6F',
+    /* backgroundColor: '#F7DC6F', */
     justifyContent: 'center',
     marginTop: 70,
   },
