@@ -9,12 +9,13 @@ const BrailleInput = (props) => {
 
   return (
     <TouchableOpacity
-      onPress={() => {
-        props.onChange(props.label)
-      }
-      }
+      onPress={() => { props.onChange(props.label) }}
     >
-      <View style={styles.inputButtons}>
+      <View
+        style={styles.inputButtons}
+        onTouchStart={() => this.console.log(`${props.label} is Multi-touch Pressed.`)}
+        onTouchEnd={() => this.console.log(`${props.label} is Multi-touch Released.`)}
+      >
         <Text style={styles.inputButtonsText}>{props.label}</Text>
       </View>
     </TouchableOpacity>
@@ -35,12 +36,13 @@ const SpaceButton = (props) => {
 
   return (
     <TouchableOpacity
-      onPress={() => {
-        props.onChange('SPACE')
-      }
-      }
+      onPress={() => { props.onChange('SPACE') }}
     >
-      <View style={styles.spaceButtonStyle}>
+      <View
+        style={styles.spaceButtonStyle}
+        onTouchStart={() => this.console.log("Space Button is Multi-touch Pressed")}
+        onTouchEnd={() => this.console.log("Space Button is Multi-touch Released")}
+      >
         <Text style={styles.spaceButtonText}>SPACE</Text>
       </View>
     </TouchableOpacity>
@@ -84,14 +86,24 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      buttonId: ''
+      buttonId: []
     }
   }
 
-  _onChangeHandler = (buttonId) => {
-    this.setState({ buttonId })
+  _onChangeHandler = buttonId => {
+    this.setState({ buttonId: this.state.buttonId += buttonId })
     console.log(`${buttonId} Button Pressed!`)
   }
+
+  /* _onChangeHandler = this.state.buttonId.map((buttonId, i) => {
+    if (buttonId === this.state.buttonId[i]) {
+      this.props.value = "Dots Cannot Be Repeated."
+      console.log(`Dots Cannot Be Repeated.`)
+    } else {
+      this.setState({ buttonId: this.state.buttonId += buttonId })
+      console.log(`${buttonId} Button Pressed!`)
+    }
+  }) */
 
   render() {
     return (
@@ -128,7 +140,7 @@ const styles = StyleSheet.create({
   grandparentContainer: {
     alignContent: 'center',
     alignItems: 'center',
-    /* backgroundColor: '#F7DC6F', */
+    /* backgroundColor: '#C0392B', */
     justifyContent: 'center',
     marginTop: 70,
   },
@@ -139,12 +151,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.75)',
     borderWidth: 2,
     borderColor: COLORS.black,
-    borderTopLeftRadius: 16,
-    borderTopRightRadius: 16,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     justifyContent: 'center',
-    /* marginBottom: 12, */
     minHeight: 500,
-    padding: 15,
+    paddingBottom: 5,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 15,
     width: 325,
   },
   rowContainer: {
@@ -180,7 +194,7 @@ const styles = StyleSheet.create({
     shadowRadius: 15,
   },
   inputButtonsText: {
-    color: COLORS.white,
+    color: 'rgba(255,255,255,0.7)',
     fontSize: 48,
   },
   spaceButtonStyle: {
@@ -194,7 +208,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   spaceButtonText: {
-    color: COLORS.white,
+    color: 'rgba(255,255,255,0.7)',
     fontSize: 40,
   },
   // to (maybe) do inset box shadows in React Native, see — https://stackoverflow.com/questions/38084120/box-shadowinset-for-react-native
