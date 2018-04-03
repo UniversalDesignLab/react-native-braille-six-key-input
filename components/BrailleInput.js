@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-import { theme, COLORS, brailleCharacters } from "../config"
+import { COLORS, brailleCharacters } from "../config"
 
 const BrailleInput = (props) => {
     let backgroundColor = COLORS.white

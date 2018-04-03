@@ -22,7 +22,7 @@ class App extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', }}>
+      <View style={styles.mainContainer}>
         <Result
           value={this.state.buttonId}
         />
@@ -36,6 +36,10 @@ class App extends Component {
 export default App
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
   brailleContent: {
     fontSize: 18,
     fontStyle: 'italic',
