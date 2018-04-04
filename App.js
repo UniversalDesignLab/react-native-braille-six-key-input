@@ -11,13 +11,17 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      buttonId: []
+      buttonId: ''
     }
   }
 
   _onChangeHandler = buttonId => {
-    this.setState({ buttonId: this.state.buttonId += buttonId.join(' ') })
+    this.setState({ buttonId: this.state.buttonId + buttonId })
     // console.log(`${buttonId} Button Pressed!`)
+  }
+
+  _clearResultValue = () => {
+    this.setState({ buttonId: '' })
   }
 
   _displayButtonsReleased
@@ -29,7 +33,10 @@ class App extends Component {
           value={this.state.buttonId}
         />
         <SixKeyInput
-          onChange={this._onChangeHandler} />
+          onChange={this._onChangeHandler}
+          clear={this._clearResultValue}
+        />
+
       </View>
     )
   }
