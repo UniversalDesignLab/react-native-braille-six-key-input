@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-import { theme, COLORS, brailleCharacters } from "../config"
+import { COLORS, brailleCharacters } from "../config"
+import _ from "lodash";
 
 const BrailleInput = (props) => {
     let backgroundColor = COLORS.white
@@ -12,12 +13,19 @@ const BrailleInput = (props) => {
         >
             <View
                 style={styles.inputButtons}
-                onTouchStart={() => this.console.log(`${props.label} is Multi-touch Pressed.`)}
-                onTouchEnd={() => this.console.log(`${props.label} is Multi-touch Released.`)}
+                onTouchStart={() => {
+                    this.console.log(`${props.label} is Multi-touch Pressed.`)
+                }
+                }
+                onTouchEnd={() => {
+                    this.console.log(`${props.label} is Multi-touch Released.`)
+                    props.onChange(_.parseInt(props.label))
+                }
+                }
             >
                 <Text style={styles.inputButtonsText}>{props.label}</Text>
             </View>
-        </TouchableOpacity>
+        </TouchableOpacity >
     )
 }
 

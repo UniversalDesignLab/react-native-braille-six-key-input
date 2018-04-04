@@ -1,55 +1,75 @@
-import React from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import React, { Component } from 'react'
+import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import BrailleInput from "./BrailleInput"
 import SpaceButton from "./SpaceButton"
+import ClearAndDone from "./ClearAndDone";
 
 import { COLORS, brailleCharacters } from "../config"
 
-const SixKeyInput = ({ onChange }) => {
+export default class SixKeyInput extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            dotCharArray: []
+        }
+    }
 
-    const choices = [1, 2, 3, 4, 5, 6]
+    _sortArray = (a, b) => { return a - b }
 
-    return (
-        <View style={styles.grandparentContainer}>
-            {/* <Text style={{ marginLeft: '7%' }}>Answer:</Text> */}
-            <View style={styles.parentContainer}>
-                <View style={styles.rowContainer}>
-                    {/* this is where {[styles.rowContainer, shadow]} used t'be */}
-                    <View style={styles.colContainer}>
-                        {choices.slice(0, 3).map((choice, i) =>
-                            <BrailleInput
-                                label={choice}
-                                onChange={onChange}
-                                key={i}
-                            />
-                        )}
+    _onChangeButtonsReleased = buttonId => {
+        console.log(`${buttonId} Button Pressed!`)
+        let outputArr = [...this.state.dotCharArray, buttonId]
+        this.setState({ dotCharArray: outputArr.sort(this._sortArray) }, () => {
+            console.log(this.state.dotCharArray)
+        })
+        this.props.onChange(this.state.dotCharArray)
+        // this.setState({ dotCharArray: [] })
+        // outputArr = []
+    }
+
+    render() {
+
+        const choices = [1, 2, 3, 4, 5, 6]
+
+        return (
+            <View style={styles.grandparentContainer} >
+                <View style={styles.parentContainer}>
+                    <ClearAndDone />
+                    <View style={styles.rowContainer}>
+                        {/* this is where {[styles.rowContainer, shadow]} used t'be */}
+                        <View style={styles.colContainer}>
+                            {choices.slice(0, 3).map((choice, i) =>
+                                <BrailleInput
+                                    label={choice}
+                                    onChange={this._onChangeButtonsReleased}
+                                    key={i}
+                                />
+                            )}
+                        </View>
+                        <View style={styles.colContainer}>
+                            {choices.slice(3, 6).map((choice, i) =>
+                                <BrailleInput
+                                    label={choice}
+                                    onChange={this._onChangeButtonsReleased}
+                                    key={i}
+                                />
+                            )}
+                        </View>
                     </View>
-                    <View style={styles.colContainer}>
-                        {choices.slice(3, 6).map((choice, i) =>
-                            <BrailleInput
-                                label={choice}
-                                onChange={onChange}
-                                key={i}
-                            />
-                        )}
-                    </View>
+                    <SpaceButton
+                        onChange={this._onChangeButtonsRelease}
+                    />
                 </View>
-                <SpaceButton
-                    onChange={onChange}
-                />
-            </View>
-        </View>
-    )
+            </View >
+        )
+    }
 }
-
-export default SixKeyInput
 
 const styles = StyleSheet.create({
     grandparentContainer: {
         alignContent: 'center',
         alignItems: 'center',
-        flex: 1,
         justifyContent: 'center',
         marginTop: 80,
     },
@@ -65,15 +85,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         minHeight: 500,
         paddingBottom: 5,
-        paddingLeft: 15,
-        paddingRight: 15,
-        paddingTop: 15,
         width: 325,
     },
     rowContainer: {
         flexDirection: 'row',
         alignContent: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
     },
     colContainer: {
