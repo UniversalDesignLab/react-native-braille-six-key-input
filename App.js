@@ -16,9 +16,11 @@ class App extends Component {
   }
 
   _onChangeHandler = buttonId => {
-    this.setState({ buttonId: this.state.buttonId += buttonId })
-    console.log(`${buttonId} Button Pressed!`)
+    this.setState({ buttonId: this.state.buttonId += buttonId.join(' ') })
+    // console.log(`${buttonId} Button Pressed!`)
   }
+
+  _displayButtonsReleased
 
   render() {
     return (
@@ -39,10 +41,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     alignItems: 'center',
-  },
-  brailleContent: {
-    fontSize: 18,
-    fontStyle: 'italic',
   },
   // to (maybe) do inset box shadows in React Native, see — https://stackoverflow.com/questions/38084120/box-shadowinset-for-react-native
   // answerCorrect: {
