@@ -17,7 +17,6 @@ class App extends Component {
 
   _onChangeHandler = buttonId => {
     this.setState({ buttonId: this.state.buttonId + buttonId })
-    // console.log(`${buttonId} Button Pressed!`)
   }
 
   _clearResultValue = () => {
@@ -36,7 +35,6 @@ class App extends Component {
           onChange={this._onChangeHandler}
           clear={this._clearResultValue}
         />
-
       </View>
     )
   }

@@ -25,21 +25,19 @@ export default class SixKeyInput extends Component {
   }
 
   _onChangeButtonsReleased = finalArray => {
-    // console.log(`${buttonId} Button Pressed!`)
-    // let outputArr = [...this.state.dotCharArray, buttonId]
     this.setState({ dotCharArray: this._noArrayDuplicates(finalArray.sort(this._sortArray)) }, () => {
       console.log(`From within SixKeyInput & the onChange func., dotCharArray is: ${this.state.dotCharArray}`)
       let arrResult = this.state.dotCharArray
-      // console.log(arrResult)
       let brailleChar = _.findKey(brailleCharacters, (value, key) => {
         return _.isEqual(arrResult, value)
       })
       console.log(`The brailleChar is now set to: ${brailleChar}`)
+      if (brailleChar === undefined) {
+        brailleChar = 'Not a Braille Character, try again.'
+      }
       this.props.onChange(brailleChar)
-
+      this.setState({ dotCharArray: [] })
     })
-    // this.setState({ dotCharArray: [] })
-    // outputArr = []
   }
 
   render() {

@@ -14,7 +14,6 @@ const ClearAndDone = (props) => {
       <TouchableOpacity
         onPress={() => {
           props.clear()
-          console.log('Clear is Pressed and your Result Field is Cleared!')
         }
         }
       >

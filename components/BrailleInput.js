@@ -18,22 +18,15 @@ const BrailleInput = (props) => {
   }
 
   return (
-    // <TouchableOpacity
-    //   onPress={() => { props.onChange(props.label) }}
-    // >
     <View
       style={props.onTouchStart ? [styles.inputButtons, styles.inputButtonPressed] : styles.inputButtons}
       onTouchStart={() => {
         counter += 1
-        this.console.log(`${props.label} is Multi-touch Pressed.`)
-        console.log(`Props label is: ${props.label}`)
         finalArray.push(_.parseInt(props.label))
       }
       }
       onTouchEnd={() => {
-        this.console.log(`${props.label} is Multi-touch Released.`)
         counter -= 1
-        console.log(`The finalArray is now: ${finalArray}`)
         if (counter === 0) {
           _onEndAllTouches()
         }
@@ -42,7 +35,6 @@ const BrailleInput = (props) => {
     >
       <Text style={styles.inputButtonsText}>{props.label}</Text>
     </View>
-    // </TouchableOpacity >
   )
 }
 
