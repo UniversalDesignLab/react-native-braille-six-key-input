@@ -33,10 +33,9 @@ export default class SixKeyInput extends Component {
       })
       console.log(`The brailleChar is now set to: ${brailleChar}`)
       if (brailleChar === undefined) {
-        brailleChar = 'Not a Braille Character, try again.'
+        brailleChar = 'Not a Braille Character.'
       }
       this.props.onChange(brailleChar)
-      this.setState({ dotCharArray: [] })
     })
   }
 
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 80,
+    marginTop: 110,
   },
   parentContainer: {
     justifyContent: 'center',
