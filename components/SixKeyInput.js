@@ -15,10 +15,14 @@ export default class SixKeyInput extends Component {
         }
     }
 
+    _sortArray = (a, b) => { return a - b }
+
     _onChangeButtonsReleased = buttonId => {
         console.log(`${buttonId} Button Pressed!`)
         let outputArr = [...this.state.dotCharArray, buttonId]
-        this.setState({ dotCharArray: outputArr }, () => console.log(this.state.dotCharArray))
+        this.setState({ dotCharArray: outputArr.sort(this._sortArray) }, () => {
+            console.log(this.state.dotCharArray)
+        })
         this.props.onChange(this.state.dotCharArray)
         // this.setState({ dotCharArray: [] })
         // outputArr = []
