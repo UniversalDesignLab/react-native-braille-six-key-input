@@ -17,10 +17,16 @@ export default class SixKeyInput extends Component {
 
     _sortArray = (a, b) => { return a - b }
 
+    _noArrayDuplicates = (theArray) => {
+        return theArray.filter((elem, pos, arr) => {
+            return arr.indexOf(elem) == pos
+        })
+    }
+
     _onChangeButtonsReleased = buttonId => {
         console.log(`${buttonId} Button Pressed!`)
         let outputArr = [...this.state.dotCharArray, buttonId]
-        this.setState({ dotCharArray: outputArr.sort(this._sortArray) }, () => {
+        this.setState({ dotCharArray: this._noArrayDuplicates(outputArr.sort(this._sortArray)) }, () => {
             console.log(this.state.dotCharArray)
         })
         this.props.onChange(this.state.dotCharArray)
