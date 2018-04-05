@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 110,
+    marginTop: 95,
   },
   parentContainer: {
     justifyContent: 'center',
