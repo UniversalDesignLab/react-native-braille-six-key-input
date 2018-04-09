@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, StyleSheet, View } from 'react-native'
 
 import Result from "./components/Result"
 import SixKeyInput from "./components/SixKeyInput";
@@ -22,8 +22,6 @@ class App extends Component {
   _clearResultValue = () => {
     this.setState({ buttonId: '' })
   }
-
-  _displayButtonsReleased
 
   render() {
     return (
