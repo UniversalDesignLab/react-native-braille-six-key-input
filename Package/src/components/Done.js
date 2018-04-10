@@ -1,23 +1,20 @@
 import React from 'react'
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-import { COLORS, brailleCharacters } from "../config"
+import { COLORS } from '../config'
 
 const textStyle = {
   color: COLORS.blue,
-  fontSize: 20,
+  fontSize: 20
 }
 
-const Done = (props) => {
-
-  _handleDonePressed = () => {
-    return true
-  }
-
+const Done = props => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={() => { console.log('Done is Pressed.') }}
+        onPress={() => {
+          console.log('Done is Pressed.')
+        }}
       >
         <Text style={styles.doneTextStyle}>Done</Text>
       </TouchableOpacity>
@@ -32,10 +29,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 10,
     maxHeight: 20,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
   doneTextStyle: {
     ...textStyle,
-    marginLeft: 140,
-  },
+    marginLeft: 140
+  }
 })

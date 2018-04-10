@@ -1,13 +1,14 @@
 import React from 'react'
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-import { COLORS, brailleCharacters } from "../config"
+import { COLORS } from '../config'
 
-const SpaceButton = (props) => {
-
+const SpaceButton = props => {
   return (
     <TouchableOpacity
-      onPress={() => { props.onChange(' ') }}
+      onPress={() => {
+        props.onChange(' ')
+      }}
     >
       <View style={styles.spaceButtonStyle}>
         <Text style={styles.spaceButtonText}>SPACE</Text>
@@ -27,10 +28,10 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     paddingLeft: 20,
     paddingRight: 20,
-    paddingTop: 5,
+    paddingTop: 5
   },
   spaceButtonText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: 40,
-  },
+    fontSize: 40
+  }
 })

@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-import { COLORS, brailleCharacters } from "../config"
-import _ from "lodash";
+import { COLORS } from '../config'
+import parseInt from 'lodash/parseInt'
 
 let counter = 0
 
 let finalArray = []
 
-const BrailleInput = (props) => {
-  let backgroundColor = COLORS.white
-
+const BrailleInput = props => {
   const _onEndAllTouches = () => {
     props.onChange(finalArray)
     counter = 0
@@ -19,19 +17,21 @@ const BrailleInput = (props) => {
 
   return (
     <View
-      style={props.onTouchStart ? [styles.inputButtons, styles.inputButtonPressed] : styles.inputButtons}
+      style={
+        props.onTouchStart
+          ? [styles.inputButtons, styles.inputButtonPressed]
+          : styles.inputButtons
+      }
       onTouchStart={() => {
         counter += 1
         finalArray.push(_.parseInt(props.label))
-      }
-      }
+      }}
       onTouchEnd={() => {
         counter -= 1
         if (counter === 0) {
           _onEndAllTouches()
         }
-      }
-      }
+      }}
     >
       <Text style={styles.inputButtonsText}>{props.label}</Text>
     </View>
@@ -55,13 +55,13 @@ const styles = StyleSheet.create({
     marginRight: 16,
     shadowColor: COLORS.black,
     shadowOffset: { width: 10, height: 10 },
-    shadowRadius: 15,
+    shadowRadius: 15
   },
   inputButtonPressed: {
     backgroundColor: COLORS.blue
   },
   inputButtonsText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: 48,
-  },
+    fontSize: 48
+  }
 })

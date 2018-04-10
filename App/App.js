@@ -1,34 +1,35 @@
 import React, { Component } from 'react'
-import { Dimensions, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
-import Result from "./components/Result"
-import SixKeyInput from "./components/SixKeyInput";
+import Result from './components/Result'
+import SixKeyInput from '../Package/src/components/SixKeyInput'
 
-import { theme, COLORS, brailleCharacters } from "./config"
-import _ from "lodash"
+// HACK to fix "undefined is not an object evalutating self.fetch"
+// - related to importing our component from a parent directory
+if (typeof global.self === 'undefined') {
+  global.self = global
+}
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      buttonId: ''
+      value: ''
     }
   }
 
-  _onChangeHandler = buttonId => {
-    this.setState({ buttonId: this.state.buttonId + buttonId })
+  _onChangeHandler = value => {
+    this.setState({ value: this.state.value + value })
   }
 
   _clearResultValue = () => {
-    this.setState({ buttonId: '' })
+    this.setState({ value: '' })
   }
 
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Result
-          value={this.state.buttonId}
-        />
+        <Result value={this.state.vaule} />
         <SixKeyInput
           onChange={this._onChangeHandler}
           clear={this._clearResultValue}
@@ -43,15 +44,6 @@ export default App
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    alignItems: 'center',
-  },
-  // to (maybe) do inset box shadows in React Native, see — https://stackoverflow.com/questions/38084120/box-shadowinset-for-react-native
-  // answerCorrect: {
-  // boxShadow: 'inset 0 0 3px green'
-  // borderColor: COLORS.green,
-  // },
-  // answerIncorrect: {
-  // boxShadow: 'inset 0 0 3px red'
-  // borderColor: COLORS.red,
-  // },
-});
+    alignItems: 'center'
+  }
+})
