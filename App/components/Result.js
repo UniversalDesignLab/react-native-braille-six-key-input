@@ -1,14 +1,12 @@
 import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
-import { COLORS, brailleCharacters } from "../config"
+import { COLORS } from '../config'
 
-const Result = (props) => {
+const Result = props => {
   return (
     <View style={styles.resultContainer}>
-      <Text style={styles.resultText}>
-        {props.value}
-      </Text>
+      <Text style={styles.resultText}>{props.value}</Text>
     </View>
   )
 }
@@ -25,11 +23,11 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     paddingLeft: 20,
     paddingRight: 20,
-    paddingTop: 0,
+    paddingTop: 0
   },
   resultText: {
     alignSelf: 'center',
     fontSize: 18,
-    width: '35%',
-  },
+    width: '35%'
+  }
 })
