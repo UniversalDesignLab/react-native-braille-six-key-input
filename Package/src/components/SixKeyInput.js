@@ -10,11 +10,8 @@ import _findKey from 'lodash/findKey'
 import _isEqual from 'lodash/isEqual'
 
 export default class SixKeyInput extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      dotCharArray: []
-    }
+  state = {
+    dotCharArray: []
   }
 
   _sortArray = (a, b) => {
