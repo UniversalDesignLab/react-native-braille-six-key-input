@@ -14,6 +14,21 @@ $ npm install react-native-braille-six-key-input
 ```bash
 $ npm install react-native-braille-six-key-input --save
 ```
+After installing package, make sure to install all NPM dependencies for your project from the root of your project —
+
+```bash
+$ npm i
+```
+
+We have also included a sample App running with this Six-Key Input, to see that, `cd` into the App directory and run `npm i` there, then `npm start`, and it will run it in Expo for you (you will need to install [Expo](https://expo.io/) on your Smart Phone to see it run) —
+
+```bash
+$ cd App
+$ npm i
+...
+$ npm start
+```
+
 ### Coming in the future —
 
 *  Responsive design to handle Landscape orientation & different screen sizes (for now, it is only in Portrait orientation)
