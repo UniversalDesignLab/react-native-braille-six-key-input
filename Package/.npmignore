@@ -1,5 +1,6 @@
 .expo
 .babelrc
+babel-preset.js
 src
 # *.test.js
 # setupTests.js
