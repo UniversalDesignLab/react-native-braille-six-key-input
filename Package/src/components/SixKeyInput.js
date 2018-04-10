@@ -12,7 +12,8 @@ import SpaceButton from './SpaceButton'
 import ClearAndDone from './Done'
 
 import { COLORS, brailleCharacters } from '../config'
-import _ from 'lodash'
+import _findKey from 'lodash/findKey'
+import _isEqual from 'lodash/isEqual'
 
 export default class SixKeyInput extends Component {
   constructor(props) {
@@ -40,8 +41,8 @@ export default class SixKeyInput extends Component {
       () => {
         // console.log(`From within SixKeyInput & the onChange func., dotCharArray is: ${this.state.dotCharArray}`)
         let arrResult = this.state.dotCharArray
-        let brailleChar = _.findKey(brailleCharacters, (value, key) => {
-          return _.isEqual(arrResult, value)
+        let brailleChar = _findKey(brailleCharacters, (value, key) => {
+          return _isEqual(arrResult, value)
         })
         // console.log(`The brailleChar is now set to: ${brailleChar}`)
         if (brailleChar === undefined) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 import { COLORS } from '../config'
-import _ from 'lodash'
+import _parseInt from 'lodash/parseInt'
 
 let counter = 0
 let finalArray = []
@@ -23,7 +23,7 @@ const BrailleInput = props => {
       }
       onTouchStart={() => {
         counter += 1
-        finalArray.push(_.parseInt(props.label))
+        finalArray.push(_parseInt(props.label))
       }}
       onTouchEnd={() => {
         counter -= 1

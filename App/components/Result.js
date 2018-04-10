@@ -1,8 +1,6 @@
 import React from 'react'
 import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
-import { COLORS } from '../config'
-
 const Result = props => {
   return (
     <View style={styles.resultContainer}>
@@ -15,7 +13,7 @@ export default Result
 
 const styles = StyleSheet.create({
   resultContainer: {
-    borderColor: COLORS.black,
+    borderColor: '#000',
     borderRadius: 10,
     borderWidth: 2,
     marginTop: 55,
