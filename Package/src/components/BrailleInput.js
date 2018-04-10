@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
 import { COLORS } from '../config'
-import parseInt from 'lodash/parseInt'
+import _ from 'lodash'
 
 let counter = 0
-
 let finalArray = []
 
 const BrailleInput = props => {

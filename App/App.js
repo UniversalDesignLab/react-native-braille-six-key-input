@@ -11,11 +11,8 @@ if (typeof global.self === 'undefined') {
 }
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: ''
-    }
+  state = {
+    value: ''
   }
 
   _onChangeHandler = value => {
@@ -29,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <Result value={this.state.vaule} />
+        <Result value={this.state.value} />
         <SixKeyInput
           onChange={this._onChangeHandler}
           clear={this._clearResultValue}
