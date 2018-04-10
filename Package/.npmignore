@@ -1,0 +1,6 @@
+.expo
+.babelrc
+src
+# *.test.js
+# setupTests.js
+# __stories__

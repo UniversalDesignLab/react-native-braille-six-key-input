@@ -1,10 +1,11 @@
 {
   "name": "react-native-braille-six-key-input",
   "version": "0.0.1",
-  "description": "React Native Component for adding a Braille Six-Key Input keypad overlay.",
+  "description":
+    "React Native Component for adding a Braille Six-Key Input keypad overlay.",
   "license": "MIT",
-  "private": true,
-  "author": "Ryan Anderson <ulab@7apps.com> (https://github.com/UniversalDesignLab)",
+  "author":
+    "Ryan Anderson <ulab@7apps.com> (https://github.com/UniversalDesignLab)",
   "contributors": [
     {
       "name": "Ryan Anderson",
@@ -31,6 +32,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-native": "^4.0.0",
+    "babel-preset-stage-1": "^6.24.1",
     "css-loader": "^0.28.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -45,27 +47,25 @@
     "jest": "^22.3.0",
     "jest-enzyme": "^4.0.2",
     "prop-types": "^15.6.0",
-    "react-native-svg-web": "^1.0.1",
-    "react-native-web": "^0.5.3",
     "react-native-scripts": "^1.12.1",
+    "react-native-web": "^0.5.3",
     "react-test-renderer": "^16.2.0",
     "sinon": "^4.3.0",
     "style-loader": "^0.20.3",
     "webpack": "^3.11.0"
   },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "main": "lib/index.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "jest"
+    "test": "jest",
+    "build":
+      "NODE_ENV=production babel src -d lib --ignore *test* --no-babelrc --presets `pwd`/babel-preset"
+  },
+  "peerDependencies": {
+    "lodash": "^4.17.5"
   },
   "dependencies": {
     "lodash": "^4.17.5",
     "react": "^16.2.0",
-    "react-native": "^0.52.0",
-    "react-native-svg": "^6.3.1",
-    "react-native-svg-icon": "^0.7.0"
+    "react-native": "^0.52.0"
   }
 }
