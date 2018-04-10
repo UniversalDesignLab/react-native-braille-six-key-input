@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginBottom: 10,
-    maxHeight: 20,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    zIndex: 1,
   },
   doneTextStyle: {
     ...textStyle,
-    marginLeft: 140
+    marginLeft: 150
   }
 })
