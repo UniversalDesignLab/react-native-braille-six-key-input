@@ -28,7 +28,7 @@ $ npm i
 ...
 $ npm start
 ```
-Once the app is running, try various key combinations for Braille letters you can at [this Braille web site](https://www.pharmabraille.com/pharmaceutical-braille/the-braille-alphabet/).
+Once the app is running, try various key combinations for Braille letters you can find at [this Braille web site](https://www.pharmabraille.com/pharmaceutical-braille/the-braille-alphabet/).
 
 ### Coming in the future —
 
