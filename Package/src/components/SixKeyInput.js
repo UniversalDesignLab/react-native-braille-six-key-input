@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
-import ClearAndDone from './Done'
+import Done from './Done'
 
 import { COLORS, brailleCharacters } from '../config'
 import _findKey from 'lodash/findKey'
@@ -60,7 +54,7 @@ export default class SixKeyInput extends Component {
     return (
       <View style={styles.grandparentContainer}>
         <View style={styles.parentContainer}>
-          <ClearAndDone clear={this.props.clear} />
+          <Done clear={this.props.clear} />
           <View style={styles.rowContainer}>
             <View style={styles.colContainer}>
               {choices
