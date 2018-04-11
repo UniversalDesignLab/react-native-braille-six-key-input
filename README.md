@@ -37,7 +37,7 @@ Once the app is running, try various key combinations for Braille letters you ca
 
 * Responsive design to handle Landscape orientation & different screen sizes (for now, it is only in Portrait orientation)
 * Backspace/Delete Key
-* Accessability to have speech to speak key labels and letters formed as they are pressed.
+* Accessability to have speech to speak the letters formed as they are completed.
 * Optional Light-colored background
 * Keys Multi-touch highlight when pressed
 * Better ability to handle Braille Numbers and Contractions
