@@ -31,6 +31,8 @@ $ npm i
 $ npm start
 ```
 
+To have the App run, you need to follow **_both_** steps above for running `npm i` in both the Package _and_ the App directories.
+
 Once the app is running, try various key combinations for Braille letters you can find at [this Braille web site](https://www.pharmabraille.com/pharmaceutical-braille/the-braille-alphabet/).
 
 ### Coming in the future —
