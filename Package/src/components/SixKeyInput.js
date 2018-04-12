@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 
 import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
@@ -9,9 +15,10 @@ import { COLORS, brailleCharacters } from '../config'
 import _findKey from 'lodash/findKey'
 import _isEqual from 'lodash/isEqual'
 
+const { width, height } = Dimensions.get('window')
 export default class SixKeyInput extends Component {
   state = {
-    dotCharArray: []
+    dotCharArray: [],
   }
 
   _sortArray = (a, b) => {
@@ -27,15 +34,13 @@ export default class SixKeyInput extends Component {
   _onChangeButtonsReleased = finalArray => {
     this.setState(
       {
-        dotCharArray: this._noArrayDuplicates(finalArray.sort(this._sortArray))
+        dotCharArray: this._noArrayDuplicates(finalArray.sort(this._sortArray)),
       },
       () => {
-        // console.log(`From within SixKeyInput & the onChange func., dotCharArray is: ${this.state.dotCharArray}`)
         let arrResult = this.state.dotCharArray
         let brailleChar = _findKey(brailleCharacters, (value, key) => {
           return _isEqual(arrResult, value)
         })
-        // console.log(`The brailleChar is now set to: ${brailleChar}`)
         if (brailleChar === undefined) {
           // brailleChar = 'Not a Braille Character.'
           brailleChar = ''
@@ -51,7 +56,8 @@ export default class SixKeyInput extends Component {
     return (
       <View style={styles.grandparentContainer}>
         <View style={styles.parentContainer}>
-          <Done clear={this.props.clear} />
+          {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
+          <Done onPress={this.props.onDone} />
           <View style={styles.rowContainer}>
             <View style={styles.colContainer}>
               {choices
@@ -85,35 +91,35 @@ export default class SixKeyInput extends Component {
 
 const styles = StyleSheet.create({
   grandparentContainer: {
-    alignContent: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 95
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
   },
   parentContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.75)',
+    backgroundColor: 'rgba(0,0,0,0.6)',
     borderWidth: 2,
     borderColor: COLORS.black,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     justifyContent: 'center',
-    minHeight: 500,
-    paddingBottom: 5,
-    width: 325
+    marginLeft: width * 0.15,
+    marginRight: width * 0.15,
+    paddingBottom: 15,
   },
   rowContainer: {
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   colContainer: {
     marginTop: 12,
     marginBottom: 12,
     flexDirection: 'column',
-    justifyContent: 'space-around'
-  }
+    justifyContent: 'space-around',
+  },
 })

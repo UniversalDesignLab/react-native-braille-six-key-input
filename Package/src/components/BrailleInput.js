@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Dimensions, StyleSheet, Text, View } from 'react-native'
 
 import { COLORS } from '../config'
 import _parseInt from 'lodash/parseInt'
 
 let counter = 0
 let finalArray = []
+
+const { width, height } = Dimensions.get('window')
 
 const BrailleInput = props => {
   const _onEndAllTouches = () => {
@@ -43,24 +45,24 @@ const styles = StyleSheet.create({
   inputButtons: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: 45,
+    borderRadius: 35,
     borderWidth: 3,
-    height: 90,
-    width: 90,
+    height: 70,
+    width: 70,
     justifyContent: 'center',
-    marginTop: 8,
-    marginBottom: 8,
+    marginTop: width * 0.0125,
+    marginBottom: width * 0.0125,
     marginLeft: 16,
     marginRight: 16,
     shadowColor: COLORS.black,
     shadowOffset: { width: 10, height: 10 },
-    shadowRadius: 15
+    shadowRadius: 15,
   },
   inputButtonPressed: {
-    backgroundColor: COLORS.blue
+    backgroundColor: COLORS.blue,
   },
   inputButtonsText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: 48
-  }
+    fontSize: 40,
+  },
 })
