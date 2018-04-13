@@ -8,7 +8,7 @@ export const COLORS = {
   red: '#A90122',
   textColor: '#1F314A',
   yellow: '#F2AA20',
-  white: '#ffffff'
+  white: '#ffffff',
 }
 
 export const brailleCharacters = {
@@ -38,7 +38,9 @@ export const brailleCharacters = {
   x: [1, 3, 4, 6],
   y: [1, 3, 4, 5, 6],
   z: [1, 3, 5, 6],
-  '#': [3, 4, 5, 6],
+}
+
+export const brailleSpcChars = {
   ',': [2],
   ';': [2, 3],
   ':': [2, 5],
@@ -46,7 +48,7 @@ export const brailleCharacters = {
   '?': [2, 3, 6],
   '!': [2, 3, 5],
   '‘': [3],
-  '-': [3, 6]
+  '-': [3, 6],
 }
 
 export const brailleNums = {
@@ -59,5 +61,5 @@ export const brailleNums = {
   '7': [[3, 4, 5, 6], [1, 2, 4, 5]],
   '8': [[3, 4, 5, 6], [1, 2, 5]],
   '9': [[3, 4, 5, 6], [2, 4]],
-  '0': [[3, 4, 5, 6], [2, 4, 5]]
+  '0': [[3, 4, 5, 6], [2, 4, 5]],
 }

@@ -54,9 +54,6 @@ const styles = StyleSheet.create({
     marginBottom: width * 0.0125,
     marginLeft: 16,
     marginRight: 16,
-    shadowColor: COLORS.black,
-    shadowOffset: { width: 10, height: 10 },
-    shadowRadius: 15,
   },
   inputButtonPressed: {
     backgroundColor: COLORS.blue,
