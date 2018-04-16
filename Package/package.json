@@ -48,10 +48,12 @@
   },
   "peerDependencies": {
     "lodash": "^4.17.5",
-    "react-native": "0.54.0",
-    "react": "16.3.0-alpha.1"
+    "react-native": "^0.54.4",
+    "react": "^16.3.0"
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.5",
+    "react": "^16.3.2",
+    "react-native": "^0.55.2"
   }
 }
