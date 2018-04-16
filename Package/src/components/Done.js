@@ -20,6 +20,9 @@ const Done = props => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={props.onPress}>
+        <Text style={styles.deleteTextStyle}>Delete</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={props.onPress}>
         <Text style={styles.doneTextStyle}>Done</Text>
       </TouchableOpacity>
     </View>
@@ -33,11 +36,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: height * 0.005,
     marginTop: height * 0.025,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-around',
     zIndex: 1,
+  },
+  deleteTextStyle: {
+    ...textStyle,
+    marginRight: width * 0.11,
   },
   doneTextStyle: {
     ...textStyle,
-    marginLeft: width * 0.4,
+    marginLeft: width * 0.11,
   },
 })
