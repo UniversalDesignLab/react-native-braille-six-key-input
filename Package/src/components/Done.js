@@ -9,20 +9,20 @@ import {
 
 import { COLORS } from '../config'
 
+const { width, height } = Dimensions.get('window')
+
 const textStyle = {
   color: COLORS.blue,
-  fontSize: 20,
+  fontSize: height * 0.0352,
 }
-
-const { width, height } = Dimensions.get('window')
 
 const Done = props => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={props.onPress}>
+      <TouchableOpacity onPress={props.onDelete}>
         <Text style={styles.deleteTextStyle}>Delete</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={props.onPress}>
+      <TouchableOpacity onPress={props.onDone}>
         <Text style={styles.doneTextStyle}>Done</Text>
       </TouchableOpacity>
     </View>
@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
   },
   deleteTextStyle: {
     ...textStyle,
-    marginRight: width * 0.11,
+    marginRight: width * 0.25,
   },
   doneTextStyle: {
     ...textStyle,
-    marginLeft: width * 0.11,
+    marginLeft: width * 0.25,
   },
 })

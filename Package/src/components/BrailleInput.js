@@ -4,39 +4,51 @@ import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import { COLORS } from '../config'
 import _parseInt from 'lodash/parseInt'
 
-let counter = 0
-let finalArray = []
-
 const { width, height } = Dimensions.get('window')
 
-const BrailleInput = props => {
-  const _onEndAllTouches = () => {
-    props.onChange(finalArray)
-    counter = 0
-    finalArray = []
+class BrailleInput extends Component {
+  state = {
+    buttonIsTouched: false,
+    counter: 0,
+    finalArray: [],
   }
 
-  return (
-    <View
-      style={
-        props.onTouchStart
-          ? [styles.inputButtons, styles.inputButtonPressed]
-          : styles.inputButtons
-      }
-      onTouchStart={() => {
-        counter += 1
-        finalArray.push(_parseInt(props.label))
-      }}
-      onTouchEnd={() => {
-        counter -= 1
-        if (counter === 0) {
-          _onEndAllTouches()
+  _onEndAllTouches = () => {
+    props.onChange(this.state.finalArray)
+    this.setState({ counter: 0, finalArray: [] })
+  }
+
+  render() {
+    return (
+      <View
+        style={
+          this.state.buttonIsTouched
+            ? [styles.inputButtons, styles.inputButtonPressed]
+            : styles.inputButtons
         }
-      }}
-    >
-      <Text style={styles.inputButtonsText}>{props.label}</Text>
-    </View>
-  )
+        onTouchStart={() => {
+          let touchArr = []
+          touchArr.push(_parseInt(this.props.label))
+          this.setState({
+            buttonIsTouched: true,
+            counter: this.state.counter + 1,
+            finalArray: touchArr,
+          })
+        }}
+        onTouchEnd={() => {
+          this.setState({
+            buttonIsTouched: false,
+            counter: this.state.counter - 1,
+          })
+          if (this.state.counter === 0) {
+            this.props._onEndAllTouches()
+          }
+        }}
+      >
+        <Text style={styles.inputButtonsText}>{this.props.label}</Text>
+      </View>
+    )
+  }
 }
 
 export default BrailleInput
@@ -45,15 +57,15 @@ const styles = StyleSheet.create({
   inputButtons: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: 35,
+    borderRadius: 45,
     borderWidth: 3,
-    height: 70,
-    width: 70,
+    height: 90,
+    width: 90,
     justifyContent: 'center',
-    marginTop: width * 0.0125,
-    marginBottom: width * 0.0125,
-    marginLeft: 16,
-    marginRight: 16,
+    marginTop: height * 0.00625,
+    marginBottom: height * 0.00625,
+    marginLeft: 10,
+    marginRight: 10,
   },
   inputButtonPressed: {
     backgroundColor: COLORS.blue,

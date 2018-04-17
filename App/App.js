@@ -12,7 +12,7 @@ if (typeof global.self === 'undefined') {
 
 class App extends Component {
   state = {
-    value: ''
+    value: '',
   }
 
   _onChangeHandler = value => {
@@ -23,12 +23,17 @@ class App extends Component {
     this.setState({ value: '' })
   }
 
+  _onDelete = () => {
+    this.setState({ value: value.substring(0, this.state.value.length - 1) })
+  }
+
   render() {
     return (
       <View style={styles.mainContainer}>
         <Result value={this.state.value} />
         <SixKeyInput
           onChange={this._onChangeHandler}
+          onDelete={this._onDelete}
           clear={this._clearResultValue}
         />
       </View>
@@ -41,6 +46,6 @@ export default App
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 })

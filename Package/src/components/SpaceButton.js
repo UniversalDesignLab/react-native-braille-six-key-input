@@ -26,12 +26,12 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     paddingBottom: 5,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 5
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 5,
   },
   spaceButtonText: {
-    color: 'rgba(255,255,255,0.7)',
-    fontSize: 40
-  }
+    color: 'rgba(255,255,255,0.8)',
+    fontSize: 32,
+  },
 })

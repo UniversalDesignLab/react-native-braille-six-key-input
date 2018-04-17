@@ -21,11 +21,11 @@ const styles = StyleSheet.create({
     paddingBottom: 3,
     paddingLeft: 20,
     paddingRight: 20,
-    paddingTop: 0
+    paddingTop: 0,
   },
   resultText: {
     alignSelf: 'center',
     fontSize: 18,
-    width: '35%'
-  }
+    width: '35%',
+  },
 })

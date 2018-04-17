@@ -50,6 +50,11 @@ export default class SixKeyInput extends Component {
     )
   }
 
+  _onDelete = () => {
+    console.log('Delete got pressed!')
+    props.value = props.value.slice(0, -1)
+  }
+
   render() {
     const choices = [1, 2, 3, 4, 5, 6]
 
@@ -57,7 +62,7 @@ export default class SixKeyInput extends Component {
       <View style={styles.grandparentContainer}>
         <View style={styles.parentContainer}>
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
-          <Done onPress={this.props.onDone} />
+          <Done onDone={this.props.onDone} onDelete={this.props._onDelete} />
           <View style={styles.rowContainer}>
             <View style={styles.colContainer}>
               {choices
@@ -69,6 +74,9 @@ export default class SixKeyInput extends Component {
                     key={i}
                   />
                 ))}
+            </View>
+            <View>
+              <SpaceButton onChange={this.props.onChange} />
             </View>
             <View style={styles.colContainer}>
               {choices
@@ -82,7 +90,6 @@ export default class SixKeyInput extends Component {
                 ))}
             </View>
           </View>
-          <SpaceButton onChange={this.props.onChange} />
         </View>
       </View>
     )
@@ -100,14 +107,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.6)',
+    backgroundColor: 'rgba(0,0,0,0.8)',
     borderWidth: 2,
-    borderColor: COLORS.black,
+    borderTopColor: COLORS.black,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     justifyContent: 'center',
-    marginLeft: width * 0.15,
-    marginRight: width * 0.15,
     paddingBottom: 15,
   },
   rowContainer: {
@@ -117,9 +122,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   colContainer: {
-    marginTop: 12,
-    marginBottom: 12,
+    marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
+  },
+  viewSpacer: {
+    width: width * 0.33,
   },
 })
