@@ -50,11 +50,6 @@ export default class SixKeyInput extends Component {
     )
   }
 
-  _onDelete = () => {
-    console.log('Delete got pressed!')
-    props.value = props.value.slice(0, -1)
-  }
-
   render() {
     const choices = [1, 2, 3, 4, 5, 6]
 
@@ -62,7 +57,7 @@ export default class SixKeyInput extends Component {
       <View style={styles.grandparentContainer}>
         <View style={styles.parentContainer}>
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
-          <Done onDone={this.props.onDone} onDelete={this.props._onDelete} />
+          <Done onDone={this.props.onDone} onDelete={this.props.onDelete} />
           <View style={styles.rowContainer}>
             <View style={styles.colContainer}>
               {choices
@@ -113,7 +108,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     justifyContent: 'center',
-    paddingBottom: 15,
+    paddingBottom: 5,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -125,8 +120,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
-  },
-  viewSpacer: {
-    width: width * 0.33,
   },
 })

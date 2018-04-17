@@ -24,10 +24,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     borderColor: COLORS.grey,
     borderRadius: 10,
-    borderWidth: 2,
+    borderWidth: 3,
     paddingBottom: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
     paddingTop: 5,
   },
   spaceButtonText: {

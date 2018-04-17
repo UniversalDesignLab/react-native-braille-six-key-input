@@ -6,16 +6,18 @@ import _parseInt from 'lodash/parseInt'
 
 const { width, height } = Dimensions.get('window')
 
+let counter = 0
+let finalArray = []
+
 class BrailleInput extends Component {
   state = {
     buttonIsTouched: false,
-    counter: 0,
-    finalArray: [],
   }
 
   _onEndAllTouches = () => {
-    props.onChange(this.state.finalArray)
-    this.setState({ counter: 0, finalArray: [] })
+    this.props.onChange(finalArray)
+    counter = 0
+    finalArray = []
   }
 
   render() {
@@ -27,21 +29,15 @@ class BrailleInput extends Component {
             : styles.inputButtons
         }
         onTouchStart={() => {
-          let touchArr = []
-          touchArr.push(_parseInt(this.props.label))
-          this.setState({
-            buttonIsTouched: true,
-            counter: this.state.counter + 1,
-            finalArray: touchArr,
-          })
+          this.setState({ buttonIsTouched: true })
+          counter++
+          finalArray.push(_parseInt(this.props.label))
         }}
         onTouchEnd={() => {
-          this.setState({
-            buttonIsTouched: false,
-            counter: this.state.counter - 1,
-          })
-          if (this.state.counter === 0) {
-            this.props._onEndAllTouches()
+          this.setState({ buttonIsTouched: false })
+          counter--
+          if (counter === 0) {
+            this._onEndAllTouches()
           }
         }}
       >
@@ -57,10 +53,10 @@ const styles = StyleSheet.create({
   inputButtons: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: 45,
+    borderRadius: height * 0.14 / 2,
     borderWidth: 3,
-    height: 90,
-    width: 90,
+    height: height * 0.14,
+    width: height * 0.14,
     justifyContent: 'center',
     marginTop: height * 0.00625,
     marginBottom: height * 0.00625,
@@ -72,6 +68,6 @@ const styles = StyleSheet.create({
   },
   inputButtonsText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: 40,
+    fontSize: height * 0.07,
   },
 })

@@ -24,7 +24,9 @@ class App extends Component {
   }
 
   _onDelete = () => {
-    this.setState({ value: value.substring(0, this.state.value.length - 1) })
+    this.setState({
+      value: this.state.value.slice(0, -1),
+    })
   }
 
   render() {
