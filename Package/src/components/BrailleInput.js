@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Dimensions, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Text, View } from 'react-native'
+import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 
 import { COLORS } from '../config'
 import _parseInt from 'lodash/parseInt'
 
-const { width, height } = Dimensions.get('window')
+const { /* width, */ height } = Dimensions.get('screen')
 
 let counter = 0
 let finalArray = []
@@ -21,12 +22,27 @@ class BrailleInput extends Component {
   }
 
   render() {
+    const inputButtonStyle = [
+      normalStyles.inputButton,
+      responsiveStyles.inputButton,
+    ]
+
+    const inputButtonPressedStyle = [
+      normalStyles.inputButtonPressed,
+      responsiveStyles.inputButtonPressed,
+    ]
+
+    const inputButtonTextStyle = [
+      normalStyles.inputButtonText,
+      responsiveStyles.inputButtonText,
+    ]
+
     return (
       <View
         style={
           this.state.buttonIsTouched
-            ? [styles.inputButtons, styles.inputButtonPressed]
-            : styles.inputButtons
+            ? [inputButtonStyle, inputButtonPressedStyle]
+            : inputButtonStyle
         }
         onTouchStart={() => {
           this.setState({ buttonIsTouched: true })
@@ -41,7 +57,7 @@ class BrailleInput extends Component {
           }
         }}
       >
-        <Text style={styles.inputButtonsText}>{this.props.label}</Text>
+        <Text style={inputButtonTextStyle}>{this.props.label}</Text>
       </View>
     )
   }
@@ -49,8 +65,8 @@ class BrailleInput extends Component {
 
 export default BrailleInput
 
-const styles = StyleSheet.create({
-  inputButtons: {
+const normalStyles = ResponsiveStylesheet.create({
+  inputButton: {
     alignItems: 'center',
     borderColor: COLORS.grey,
     borderRadius: height * 0.14 / 2,
@@ -66,8 +82,25 @@ const styles = StyleSheet.create({
   inputButtonPressed: {
     backgroundColor: COLORS.blue,
   },
-  inputButtonsText: {
+  inputButtonText: {
     color: 'rgba(255,255,255,0.7)',
     fontSize: height * 0.07,
+  },
+})
+
+const responsiveStyles = ResponsiveStylesheet.createOriented({
+  landscape: {
+    inputButton: {
+      borderRadius: height * 0.2 / 2,
+      height: height * 0.2,
+      width: height * 0.2,
+    },
+    inputButtonPressed: {},
+    inputButtonText: { fontSize: height * 0.12 },
+  },
+  portrait: {
+    inputButton: {},
+    inputButtonPressed: {},
+    inputButtonText: {},
   },
 })

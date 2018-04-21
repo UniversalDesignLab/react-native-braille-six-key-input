@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
-import {
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import { Dimensions, View } from 'react-native'
+import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 
 import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
@@ -15,7 +10,7 @@ import { COLORS, brailleCharacters } from '../config'
 import _findKey from 'lodash/findKey'
 import _isEqual from 'lodash/isEqual'
 
-const { width, height } = Dimensions.get('window')
+const { width, height } = Dimensions.get('screen')
 export default class SixKeyInput extends Component {
   state = {
     dotCharArray: [],
@@ -52,14 +47,38 @@ export default class SixKeyInput extends Component {
 
   render() {
     const choices = [1, 2, 3, 4, 5, 6]
+    const grandparentContainerStyle = [
+      normalStyles.grandparentContainer,
+      responsiveStyles.grandparentContainer,
+    ]
+    const parentContainerStyle = [
+      normalStyles.parentContainer,
+      responsiveStyles.parentContainer,
+    ]
+    const rowContainerStyle = [
+      normalStyles.rowContainer,
+      responsiveStyles.rowContainer,
+    ]
+    const spaceButtonStyle = [
+      normalStyles.spaceButton,
+      responsiveStyles.spaceButton,
+    ]
+    const colContainerLeftStyle = [
+      normalStyles.colContainerLeft,
+      responsiveStyles.colContainerLeft,
+    ]
+    const colContainerRightStyle = [
+      normalStyles.colContainerRight,
+      responsiveStyles.colContainerRight,
+    ]
 
     return (
-      <View style={styles.grandparentContainer}>
-        <View style={styles.parentContainer}>
+      <View style={grandparentContainerStyle}>
+        <View style={parentContainerStyle}>
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
           <Done onDone={this.props.onDone} onDelete={this.props.onDelete} />
-          <View style={styles.rowContainer}>
-            <View style={styles.colContainer}>
+          <View style={rowContainerStyle}>
+            <View style={colContainerLeftStyle}>
               {choices
                 .slice(0, 3)
                 .map((choice, i) => (
@@ -71,9 +90,12 @@ export default class SixKeyInput extends Component {
                 ))}
             </View>
             <View>
-              <SpaceButton onChange={this.props.onChange} />
+              <SpaceButton
+                style={spaceButtonStyle}
+                onChange={this.props.onChange}
+              />
             </View>
-            <View style={styles.colContainer}>
+            <View style={colContainerRightStyle}>
               {choices
                 .slice(3, 6)
                 .map((choice, i) => (
@@ -91,7 +113,7 @@ export default class SixKeyInput extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const normalStyles = ResponsiveStylesheet.create({
   grandparentContainer: {
     position: 'absolute',
     bottom: 0,
@@ -99,8 +121,6 @@ const styles = StyleSheet.create({
   },
   parentContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.8)',
     borderWidth: 2,
@@ -116,9 +136,44 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  colContainer: {
+  spaceButton: {},
+  colContainerLeft: {
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
+  },
+  colContainerRight: {
+    marginBottom: 5,
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+})
+
+const responsiveStyles = ResponsiveStylesheet.createOriented({
+  landscape: {
+    grandparentContainer: {
+      height: '75%',
+    },
+    parentContainer: {
+      padding: 0,
+    },
+    rowContainer: {},
+    spaceButton: {},
+    colContainerLeft: {
+      marginRight: width * 0.18,
+      marginVertical: height * 0.03,
+    },
+    colContainerRight: {
+      marginLeft: width * 0.18,
+      marginVertical: height * 0.03,
+    },
+  },
+  portrait: {
+    grandparentContainer: {},
+    parentContainer: {},
+    rowContainer: {},
+    spaceButton: {},
+    colContainerLeft: {},
+    colContainerRight: {},
   },
 })

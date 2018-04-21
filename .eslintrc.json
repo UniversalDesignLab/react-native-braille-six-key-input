@@ -1,0 +1,13 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "semi": [
+      "error",
+      "never"
+    ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script"
+  }
+}

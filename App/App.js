@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { StyleSheet, View } from 'react-native'
-import ResponsiveStylesheet from "react-native-responsive-stylesheet";
 
 import Result from './components/Result'
 import SixKeyInput from '../Package/src/components/SixKeyInput'
@@ -52,7 +51,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 })
-
-const normalStyles
-
-
