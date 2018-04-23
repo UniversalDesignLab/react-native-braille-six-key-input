@@ -10,7 +10,7 @@ import { COLORS, brailleCharacters } from '../config'
 import _findKey from 'lodash/findKey'
 import _isEqual from 'lodash/isEqual'
 
-const { width, height } = Dimensions.get('screen')
+const { width } = Dimensions.get('screen')
 export default class SixKeyInput extends Component {
   state = {
     dotCharArray: [],
@@ -128,7 +128,7 @@ const normalStyles = ResponsiveStylesheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     justifyContent: 'center',
-    paddingBottom: 5,
+    padding: 10,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -138,11 +138,13 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   spaceButton: {},
   colContainerLeft: {
+    marginLeft: 10,
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
   colContainerRight: {
+    marginRight: 10,
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
@@ -152,20 +154,18 @@ const normalStyles = ResponsiveStylesheet.create({
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     grandparentContainer: {
-      height: '75%',
+      height: '78%',
     },
     parentContainer: {
-      padding: 0,
+      padding: 20,
     },
     rowContainer: {},
     spaceButton: {},
     colContainerLeft: {
-      marginRight: width * 0.18,
-      marginVertical: height * 0.03,
+      marginRight: width * 0.17,
     },
     colContainerRight: {
-      marginLeft: width * 0.18,
-      marginVertical: height * 0.03,
+      marginLeft: width * 0.17,
     },
   },
   portrait: {

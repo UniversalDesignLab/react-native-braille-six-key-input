@@ -69,13 +69,12 @@ const normalStyles = ResponsiveStylesheet.create({
   inputButton: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: height * 0.14 / 2,
+    borderRadius: height * 0.16 / 2,
     borderWidth: 3,
-    height: height * 0.14,
-    width: height * 0.14,
+    height: height * 0.16,
+    width: height * 0.16,
     justifyContent: 'center',
-    marginTop: height * 0.00625,
-    marginBottom: height * 0.00625,
+    marginVertical: height * 0.008,
     marginLeft: 10,
     marginRight: 10,
   },
@@ -84,19 +83,23 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   inputButtonText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: height * 0.07,
+    fontSize: height * 0.1,
   },
 })
 
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     inputButton: {
-      borderRadius: height * 0.2 / 2,
-      height: height * 0.2,
-      width: height * 0.2,
+      borderRadius: height * 0.22 / 2,
+      height: height * 0.22,
+      width: height * 0.22,
+      marginVertical: 0,
+      marginBottom: 3,
     },
     inputButtonPressed: {},
-    inputButtonText: { fontSize: height * 0.12 },
+    inputButtonText: {
+      fontSize: height * 0.135,
+    },
   },
   portrait: {
     inputButton: {},

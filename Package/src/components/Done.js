@@ -29,7 +29,6 @@ const normalStyles = ResponsiveStylesheet.create({
   container: {
     flexDirection: 'row',
     marginBottom: height * 0.005,
-    marginTop: height * 0.025,
     justifyContent: 'space-around',
     zIndex: 1,
   },
@@ -49,14 +48,16 @@ const normalStyles = ResponsiveStylesheet.create({
 
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
-    container: {},
-    deleteTextStyle: {
-      fontSize: height * 0.0704,
-      marginRight: width * 0.4,
+    container: {
+      marginBottom: height * 0.03,
     },
-    doneTextStyle: {
-      fontSize: height * 0.0704,
-      marginRight: width * 0.4,
+    deleteText: {
+      fontSize: 19,
+      marginRight: width * 0.375,
+    },
+    doneText: {
+      fontSize: 19,
+      marginLeft: width * 0.375,
     },
   },
   portrait: {

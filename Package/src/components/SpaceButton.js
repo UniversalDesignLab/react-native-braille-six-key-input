@@ -41,7 +41,7 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   spaceButtonText: {
     color: 'rgba(255,255,255,0.8)',
-    fontSize: 32,
+    fontSize: 30,
   },
 })
 
@@ -52,7 +52,7 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
       paddingVertical: 15,
     },
     spaceButtonText: {
-      fontSize: 56,
+      fontSize: 52,
     },
   },
   portrait: {
