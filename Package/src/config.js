@@ -1,3 +1,5 @@
+import { Dimensions, Platform } from 'react-native'
+
 export const COLORS = {
   black: '#020202',
   blue: '#29AFB5',
@@ -62,4 +64,40 @@ export const brailleNums = {
   '8': [[3, 4, 5, 6], [1, 2, 5]],
   '9': [[3, 4, 5, 6], [2, 4]],
   '0': [[3, 4, 5, 6], [2, 4, 5]],
+}
+
+export const isIphoneX = () => {
+  let dimen = Dimensions.get('window')
+  return (
+    Platform.OS === 'ios' &&
+    !Platform.isPad &&
+    !Platform.isTVOS &&
+    (dimen.height === 812 || dimen.width === 812)
+  )
+}
+
+export const isIphone5s = () => {
+  let height = Dimensions.get('screen').height
+  return (
+    Platform.OS === 'ios' &&
+    !Platform.isPad &&
+    !Platform.isTVOS &&
+    (height === 568 || height === 568)
+  )
+}
+
+export const ifIphoneX = (iphoneXStyle, regularStyle) => {
+  if (isIphoneX()) {
+    return iphoneXStyle
+  } else {
+    return regularStyle
+  }
+}
+
+export const ifIPhone5s = (littlestIPhoneStyle, regularStyle) => {
+  if (isIphone5s()) {
+    return littlestIPhoneStyle
+  } else {
+    return regularStyle
+  }
 }

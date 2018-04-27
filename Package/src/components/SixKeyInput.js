@@ -6,7 +6,7 @@ import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
 import Done from './Done'
 
-import { COLORS, brailleCharacters } from '../config'
+import { COLORS, brailleCharacters, ifIphoneX } from '../config'
 import _findKey from 'lodash/findKey'
 import _isEqual from 'lodash/isEqual'
 
@@ -138,13 +138,13 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   spaceButton: {},
   colContainerLeft: {
-    marginLeft: 10,
+    marginLeft: ifIphoneX(20, 10),
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
   colContainerRight: {
-    marginRight: 10,
+    marginRight: ifIphoneX(20, 10),
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
