@@ -138,13 +138,13 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   spaceButton: {},
   colContainerLeft: {
-    marginLeft: ifIphoneX(22, 10),
+    marginLeft: ifIphoneX(30, 10),
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
   colContainerRight: {
-    marginRight: ifIphoneX(22, 10),
+    marginRight: ifIphoneX(30, 10),
     marginBottom: 5,
     flexDirection: 'column',
     justifyContent: 'space-around',

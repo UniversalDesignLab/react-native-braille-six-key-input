@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 
-import { COLORS } from '../config'
+import { COLORS, ifIphoneX } from '../config'
 
 const SpaceButton = props => {
   const spaceButtonStyle = [
@@ -36,8 +36,8 @@ const normalStyles = ResponsiveStylesheet.create({
     borderColor: COLORS.grey,
     borderRadius: 10,
     borderWidth: 3,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
+    paddingHorizontal: ifIphoneX(3, 5),
+    paddingVertical: ifIphoneX(3, 5),
   },
   spaceButtonText: {
     color: 'rgba(255,255,255,0.8)',

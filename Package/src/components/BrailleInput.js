@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 
-import { COLORS } from '../config'
+import { COLORS, ifIphoneX } from '../config'
 import _parseInt from 'lodash/parseInt'
 
 const { /* width, */ height } = Dimensions.get('screen')
@@ -69,10 +69,10 @@ const normalStyles = ResponsiveStylesheet.create({
   inputButton: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: height * 0.16 / 2,
+    borderRadius: ifIphoneX(height * 0.14 / 2, height * 0.16 / 2),
     borderWidth: 3,
-    height: height * 0.16,
-    width: height * 0.16,
+    height: ifIphoneX(height * 0.14, height * 0.16),
+    width: ifIphoneX(height * 0.14, height * 0.16),
     justifyContent: 'center',
     marginVertical: height * 0.008,
     marginLeft: 10,
