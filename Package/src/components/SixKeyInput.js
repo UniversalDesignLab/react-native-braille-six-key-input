@@ -6,7 +6,8 @@ import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
 import Done from './Done'
 
-import { COLORS, brailleCharacters, ifIphoneX } from '../config'
+import { COLORS, ifIphoneX } from '../config'
+import { brailleCharacters } from '../brailleObj'
 import _findKey from 'lodash/findKey'
 import _isEqual from 'lodash/isEqual'
 
