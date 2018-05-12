@@ -7,9 +7,11 @@ import SpaceButton from './SpaceButton'
 import Done from './Done'
 
 import { COLORS, ifIphoneX } from '../config'
-import { brailleCharacters, unicodeBrailleCharacters } from '../brailleObj'
-import _findKey from 'lodash/findKey'
-import _isEqual from 'lodash/isEqual'
+import {
+  /* brailleCharacters,  */ unicodeBrailleCharacters,
+} from '../brailleObj'
+/* import _findKey from 'lodash/findKey'
+import _isEqual from 'lodash/isEqual' */
 
 const { width } = Dimensions.get('screen')
 export default class SixKeyInput extends Component {
@@ -33,15 +35,14 @@ export default class SixKeyInput extends Component {
         dotCharArray: this._noArrayDuplicates(finalArray.sort(this._sortArray)),
       },
       () => {
-        let arrResult = this.state.dotCharArray
-        let keyFinal = this.state.dotCharArray.join('')
-        let newBrailleChar = unicodeBrailleCharacters[keyFinal].char
-        console.log(newBrailleChar)
-        let brailleChar = _findKey(brailleCharacters, (value, key) => {
-          return _isEqual(arrResult, value)
-        })
-        if (brailleChar === undefined) {
-          // brailleChar = 'Not a Braille Character.'
+        // let arrResult = this.state.dotCharArray
+        let brailleKey = this.state.dotCharArray.join('')
+        let brailleChar = unicodeBrailleCharacters[brailleKey].char
+        // console.log(newBrailleChar)
+        // let brailleChar = _findKey(brailleCharacters, (value, key) => {
+        //   return _isEqual(arrResult, value)
+        // })
+        if (brailleChar === undefined || brailleChar === null) {
           brailleChar = ''
         }
         this.props.onChange(brailleChar)
