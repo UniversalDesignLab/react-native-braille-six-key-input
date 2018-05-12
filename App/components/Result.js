@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     marginTop: 55,
-    minWidth: 125,
+    minHeight: 40,
+    minWidth: 150,
     paddingBottom: 3,
     paddingLeft: 20,
     paddingRight: 20,
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
   resultText: {
     alignSelf: 'center',
-    fontSize: 18,
+    fontSize: 36,
     width: '35%',
   },
 })
