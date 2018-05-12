@@ -1,6 +1,6 @@
 {
   "name": "ueb-packages",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React Native Component for adding a Braille Six-Key Input keypad overlay.",
   "license": "MIT",
   "private": true,
