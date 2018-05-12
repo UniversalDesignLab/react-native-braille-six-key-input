@@ -34,15 +34,8 @@ export default class SixKeyInput extends Component {
       },
       () => {
         let arrResult = this.state.dotCharArray
-        let newBrailleChar = _findKey(
-          unicodeBrailleCharacters,
-          (value, key) => {
-            console.log(arrResult)
-            let keyFinal = arrResult.join('')
-            console.log(keyFinal)
-            return String.fromCharCode(_isEqual(keyFinal, value.charCode))
-          }
-        )
+        let keyFinal = this.state.dotCharArray.join('')
+        let newBrailleChar = unicodeBrailleCharacters[keyFinal].char
         console.log(newBrailleChar)
         let brailleChar = _findKey(brailleCharacters, (value, key) => {
           return _isEqual(arrResult, value)
