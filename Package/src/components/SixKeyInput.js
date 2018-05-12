@@ -7,7 +7,7 @@ import SpaceButton from './SpaceButton'
 import Done from './Done'
 
 import { COLORS, ifIphoneX } from '../config'
-import { brailleCharacters } from '../brailleObj'
+import { brailleCharacters, unicodeBrailleCharacters } from '../brailleObj'
 import _findKey from 'lodash/findKey'
 import _isEqual from 'lodash/isEqual'
 
@@ -34,6 +34,14 @@ export default class SixKeyInput extends Component {
       },
       () => {
         let arrResult = this.state.dotCharArray
+        let newBrailleChar = _findKey(
+          unicodeBrailleCharacters,
+          (value, key) => {
+            let keyFinal = arrResult.join('')
+            return _isEqual(keyFinal, value.char)
+          }
+        )
+        console.log(newBrailleChar)
         let brailleChar = _findKey(brailleCharacters, (value, key) => {
           return _isEqual(arrResult, value)
         })
