@@ -91,8 +91,8 @@ export default class SixKeyInput extends Component {
                     label={choice}
                     onChange={this._onChangeButtonsReleased}
                     key={i}
-                    onTouchStart={this.props.onTouchStartFunctions[choice]}
-                    onTouchEnd={this.props.onTouchEndFunctions[choice]}
+                    onTouchStart={this.props.onTouchStartFunctions[choice-1]}
+                    onTouchEnd={this.props.onTouchEndFunctions[choice-1]}
                   />
                 ))}
             </View>
@@ -110,8 +110,8 @@ export default class SixKeyInput extends Component {
                     label={choice}
                     onChange={this._onChangeButtonsReleased}
                     key={i}
-                    onTouchStart={this.props.onTouchStartFunctions[choice]}
-                    onTouchEnd={this.props.onTouchEndFunctions[choice]}
+                    onTouchStart={this.props.onTouchStartFunctions[choice-1]}
+                    onTouchEnd={this.props.onTouchEndFunctions[choice-1]}
                   />
                 ))}
             </View>

@@ -10,6 +10,14 @@ if (typeof global.self === 'undefined') {
   global.self = global
 }
 
+const createOnTouchStartFn = i => () => {
+    console.log("Pressed", i);
+  }
+
+  const createOnTouchEndFn = i => () => {
+    console.log("Released", i);
+  }
+
 class App extends Component {
   state = {
     value: '',
@@ -37,6 +45,8 @@ class App extends Component {
           onChange={this._onChangeHandler}
           onDelete={this._onDelete}
           clear={this._clearResultValue}
+          onTouchStartFunctions={[1,2,3,4,5,6].map(createOnTouchStartFn)}
+          onTouchEndFunctions={[1,2,3,4,5,6].map(createOnTouchEndFn)}
         />
       </View>
     )
