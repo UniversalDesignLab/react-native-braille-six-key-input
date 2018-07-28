@@ -44,7 +44,6 @@ class App extends Component {
         <SixKeyInput
           onChange={this._onChangeHandler}
           onDelete={this._onDelete}
-          clear={this._clearResultValue}
           onTouchStartFunctions={[1,2,3,4,5,6].map(createOnTouchStartFn)}
           onTouchEndFunctions={[1,2,3,4,5,6].map(createOnTouchEndFn)}
         />
