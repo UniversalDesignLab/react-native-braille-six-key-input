@@ -45,7 +45,7 @@ const normalStyles = ResponsiveStylesheet.create({
   clearText: {
     color: COLORS.blue,
     fontSize: height * 0.0352,
-    marginRight: width * 0.25,
+    // marginRight: width * 0.25,
     marginTop: 5,
   },
   doneText: {
