@@ -78,20 +78,30 @@ export default class SixKeyInput extends Component {
       <View style={grandparentContainerStyle}>
         <View style={parentContainerStyle}>
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
-          <Done onDone={this.props.onDone} onDelete={this.props.onDelete} />
+          <Done
+            onDone={this.props.onDone}
+            onClear={this.props.onChange}
+            onDelete={this.props.onDelete}
+          />
           <View style={rowContainerStyle}>
             <View style={colContainerLeftStyle}>
-              {choices
-                .slice(0, 3)
-                .map((choice, i) => (
-                  <BrailleInput
-                    label={choice}
-                    onChange={this._onChangeButtonsReleased}
-                    key={i}
-                    onTouchStart={this.props.onTouchStartFunctions ? this.props.onTouchStartFunctions[choice-1] : null}
-                    onTouchEnd={this.props.onTouchEndFunctions ? this.props.onTouchEndFunctions[choice-1] : null}
-                  />
-                ))}
+              {choices.slice(0, 3).map((choice, i) => (
+                <BrailleInput
+                  label={choice}
+                  onChange={this._onChangeButtonsReleased}
+                  key={i}
+                  onTouchStart={
+                    this.props.onTouchStartFunctions
+                      ? this.props.onTouchStartFunctions[choice - 1]
+                      : null
+                  }
+                  onTouchEnd={
+                    this.props.onTouchEndFunctions
+                      ? this.props.onTouchEndFunctions[choice - 1]
+                      : null
+                  }
+                />
+              ))}
             </View>
             <View>
               <SpaceButton
@@ -100,17 +110,23 @@ export default class SixKeyInput extends Component {
               />
             </View>
             <View style={colContainerRightStyle}>
-              {choices
-                .slice(3, 6)
-                .map((choice, i) => (
-                  <BrailleInput
-                    label={choice}
-                    onChange={this._onChangeButtonsReleased}
-                    key={i}
-                    onTouchStart={this.props.onTouchStartFunctions ? this.props.onTouchStartFunctions[choice-1] : null}
-                    onTouchEnd={this.props.onTouchEndFunctions ? this.props.onTouchEndFunctions[choice-1] : null}
-                  />
-                ))}
+              {choices.slice(3, 6).map((choice, i) => (
+                <BrailleInput
+                  label={choice}
+                  onChange={this._onChangeButtonsReleased}
+                  key={i}
+                  onTouchStart={
+                    this.props.onTouchStartFunctions
+                      ? this.props.onTouchStartFunctions[choice - 1]
+                      : null
+                  }
+                  onTouchEnd={
+                    this.props.onTouchEndFunctions
+                      ? this.props.onTouchEndFunctions[choice - 1]
+                      : null
+                  }
+                />
+              ))}
             </View>
           </View>
         </View>
