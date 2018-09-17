@@ -42,6 +42,12 @@ const normalStyles = ResponsiveStylesheet.create({
     marginRight: width * 0.25,
     marginTop: 5,
   },
+  clearText: {
+    color: COLORS.blue,
+    fontSize: height * 0.0352,
+    marginRight: width * 0.25,
+    marginTop: 5,
+  },
   doneText: {
     color: COLORS.blue,
     fontSize: height * 0.0352,
@@ -56,6 +62,10 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
       marginBottom: height * 0.03,
     },
     deleteText: {
+      fontSize: 19,
+      marginRight: width * 0.375,
+    },
+    clearText: {
       fontSize: 19,
       marginRight: width * 0.375,
     },
