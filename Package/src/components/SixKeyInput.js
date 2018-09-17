@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Dimensions, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
+import PropTypes from 'prop-types'
 
 import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
@@ -91,6 +92,8 @@ export default class SixKeyInput extends Component {
                     label={choice}
                     onChange={this._onChangeButtonsReleased}
                     key={i}
+                    onTouchStart={this.props.onTouchStartFunctions ? this.props.onTouchStartFunctions[choice-1] : null}
+                    onTouchEnd={this.props.onTouchEndFunctions ? this.props.onTouchEndFunctions[choice-1] : null}
                   />
                 ))}
             </View>
@@ -108,6 +111,8 @@ export default class SixKeyInput extends Component {
                     label={choice}
                     onChange={this._onChangeButtonsReleased}
                     key={i}
+                    onTouchStart={this.props.onTouchStartFunctions ? this.props.onTouchStartFunctions[choice-1] : null}
+                    onTouchEnd={this.props.onTouchEndFunctions ? this.props.onTouchEndFunctions[choice-1] : null}
                   />
                 ))}
             </View>
@@ -182,3 +187,11 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
     colContainerRight: {},
   },
 })
+
+SixKeyInput.propTypes = {
+  onDone: PropTypes.func,
+  onDelete: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
+  onTouchStartFunctions: PropTypes.arrayOf(PropTypes.func),
+  onTouchEndFunctions: PropTypes.arrayOf(PropTypes.func),
+}

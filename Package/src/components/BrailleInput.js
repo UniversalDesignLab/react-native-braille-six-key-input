@@ -45,11 +45,17 @@ class BrailleInput extends Component {
             : inputButtonStyle
         }
         onTouchStart={() => {
+          if (this.props.onTouchStart) {
+            this.props.onTouchStart()
+          }
           this.setState({ buttonIsTouched: true })
           counter++
           finalArray.push(_parseInt(this.props.label))
         }}
         onTouchEnd={() => {
+          if (this.props.onTouchEnd) {
+            this.props.onTouchEnd()
+          }
           this.setState({ buttonIsTouched: false })
           counter--
           if (counter === 0) {
