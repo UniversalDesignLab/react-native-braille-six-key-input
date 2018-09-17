@@ -7,12 +7,8 @@ import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
 import Done from './Done'
 
-import { COLORS, ifIphoneX } from '../config'
-import {
-  /* brailleCharacters,  */ unicodeBrailleCharacters,
-} from '../brailleObj'
-/* import _findKey from 'lodash/findKey'
-import _isEqual from 'lodash/isEqual' */
+import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
+import { unicodeBrailleCharacters } from '../brailleObj'
 
 const { width } = Dimensions.get('screen')
 export default class SixKeyInput extends Component {
@@ -138,7 +134,7 @@ const normalStyles = ResponsiveStylesheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     justifyContent: 'center',
-    padding: 10,
+    padding: ifIPhone5s(8, 10),
   },
   rowContainer: {
     flexDirection: 'row',
