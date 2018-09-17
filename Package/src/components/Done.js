@@ -9,6 +9,7 @@ const { width, height } = Dimensions.get('window')
 const Done = props => {
   const containerStyle = [normalStyles.container, responsiveStyles.container]
   const deleteTextStyle = [normalStyles.deleteText, responsiveStyles.deleteText]
+  const clearTextStyle = [normalStyles.clearText, responsiveStyles.clearText]
   const doneTextStyle = [normalStyles.doneText, responsiveStyles.doneText]
 
   return (
