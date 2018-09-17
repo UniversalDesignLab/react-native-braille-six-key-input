@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 
-import { COLORS, ifIphoneX } from '../config'
+import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
 import _parseInt from 'lodash/parseInt'
 
-const { /* width, */ height } = Dimensions.get('screen')
+const { height } = Dimensions.get('screen')
 
 let counter = 0
 let finalArray = []
@@ -75,12 +75,15 @@ const normalStyles = ResponsiveStylesheet.create({
   inputButton: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: ifIphoneX(height * 0.14 / 2, height * 0.16 / 2),
+    borderRadius: ifIphoneX(
+      (height * 0.14) / 2,
+      ifIPhone5s((height * 0.144) / 2, (height * 0.16) / 2)
+    ),
     borderWidth: 3,
-    height: ifIphoneX(height * 0.14, height * 0.16),
-    width: ifIphoneX(height * 0.14, height * 0.16),
+    height: ifIphoneX(height * 0.14, ifIPhone5s(height * 0.144, height * 0.16)),
+    width: ifIphoneX(height * 0.14, ifIPhone5s(height * 0.144, height * 0.16)),
     justifyContent: 'center',
-    marginVertical: height * 0.008,
+    marginVertical: ifIPhone5s(height * 0.007, height * 0.008),
     marginLeft: 10,
     marginRight: 10,
   },
@@ -89,14 +92,14 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   inputButtonText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: height * 0.1,
+    fontSize: ifIPhone5s(height * 0.09, height * 0.1),
   },
 })
 
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     inputButton: {
-      borderRadius: height * 0.22 / 2,
+      borderRadius: (height * 0.22) / 2,
       height: height * 0.22,
       width: height * 0.22,
       marginVertical: 0,
