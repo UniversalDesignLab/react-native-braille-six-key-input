@@ -80,7 +80,7 @@ export default class SixKeyInput extends Component {
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
           <Done
             onDone={this.props.onDone}
-            onClear={this.props.onChange}
+            onClear={this.props.onClear}
             onDelete={this.props.onDelete}
           />
           <View style={rowContainerStyle}>
