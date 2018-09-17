@@ -32,7 +32,7 @@ export default Done
 const normalStyles = ResponsiveStylesheet.create({
   container: {
     flexDirection: 'row',
-    marginBottom: height * 0.005,
+    marginBottom: height * 0.01,
     justifyContent: 'space-around',
     zIndex: 1,
   },
