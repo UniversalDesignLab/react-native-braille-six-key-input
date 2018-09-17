@@ -17,6 +17,9 @@ const Done = props => {
       <TouchableOpacity onPress={props.onDelete}>
         <Text style={deleteTextStyle}>Delete</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={props.clearField}>
+        <Text style={clearTextStyle}>Clear</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={props.onDone}>
         <Text style={doneTextStyle}>Done</Text>
       </TouchableOpacity>
