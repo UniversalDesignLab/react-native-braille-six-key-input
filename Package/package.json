@@ -1,6 +1,6 @@
 {
   "name": "react-native-braille-six-key-input",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "React Native Component for adding a Braille Six-Key Input keypad overlay.",
   "license": "MIT",
   "author": "Ryan Anderson <ulab@7apps.com> (https://github.com/UniversalDesignLab)",
