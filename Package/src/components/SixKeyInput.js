@@ -20,11 +20,8 @@ export default class SixKeyInput extends Component {
     return a - b
   }
 
-  _noArrayDuplicates = theArray => {
-    return theArray.filter((elem, pos, arr) => {
-      return arr.indexOf(elem) === pos
-    })
-  }
+  _noArrayDuplicates = theArray =>
+    theArray.filter((elem, pos, arr) => arr.indexOf(elem) === pos)
 
   _onChangeButtonsReleased = finalArray => {
     this.setState(
