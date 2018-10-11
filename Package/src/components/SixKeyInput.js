@@ -151,25 +151,6 @@ export default class SixKeyInput extends Component {
     return (
       <View style={grandparentContainerStyle}>
         <View style={parentContainerStyle}>
-          <View
-            style={{
-              backgroundColor: 'cornsilk',
-              borderWidth: 2,
-              borderColor: 'rgba(0,0,0,0.8)',
-            }}
-          >
-            <Text
-              style={{
-                color: 'blue',
-                fontSize: 30,
-                justifyContent: 'flex-end',
-                padding: 10,
-                textAlign: 'center',
-              }}
-            >
-              {this.state.dotCharArray}
-            </Text>
-          </View>
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
           <Done
             onDone={this.props.onDone}
