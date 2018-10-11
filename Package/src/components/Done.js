@@ -46,6 +46,7 @@ const normalStyles = ResponsiveStylesheet.create({
   deleteText: {
     color: COLORS.blue,
     fontSize: height * 0.0352,
+    marginLeft: 10,
     marginRight: width * 0.25,
     marginTop: 5,
   },
@@ -59,6 +60,7 @@ const normalStyles = ResponsiveStylesheet.create({
     color: COLORS.blue,
     fontSize: height * 0.0352,
     marginLeft: width * 0.25,
+    marginRight: 20,
     marginTop: 5,
   },
 })
