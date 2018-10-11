@@ -151,57 +151,81 @@ export default class SixKeyInput extends Component {
     return (
       <View style={grandparentContainerStyle}>
         <View style={parentContainerStyle}>
+          <View
+            style={{
+              backgroundColor: 'cornsilk',
+              borderWidth: 2,
+              borderColor: 'rgba(0,0,0,0.8)',
+            }}
+          >
+            <Text
+              style={{
+                color: 'blue',
+                fontSize: 30,
+                justifyContent: 'flex-end',
+                padding: 10,
+                textAlign: 'center',
+              }}
+            >
+              {this.state.dotCharArray}
+            </Text>
+          </View>
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
           <Done
             onDone={this.props.onDone}
             onClear={this.props.onClear}
             onDelete={this.props.onDelete}
           />
-          <View style={rowContainerStyle}>
-            <View style={colContainerLeftStyle}>
-              {choices.slice(0, 3).map((choice, i) => (
-                <BrailleInput
-                  label={choice}
-                  onChange={this._onChangeButtonsReleased}
-                  key={i}
-                  onTouchStart={
-                    this.props.onTouchStartFunctions
-                      ? this.props.onTouchStartFunctions[choice - 1]
-                      : null
-                  }
-                  onTouchEnd={
-                    this.props.onTouchEndFunctions
-                      ? this.props.onTouchEndFunctions[choice - 1]
-                      : null
-                  }
-                />
-              ))}
-            </View>
-            <View>
-              <SpaceButton
-                style={spaceButtonStyle}
-                onChange={this.props.onChange}
-              />
-            </View>
-            <View style={colContainerRightStyle}>
-              {choices.slice(3, 6).map((choice, i) => (
-                <BrailleInput
-                  label={choice}
-                  onChange={this._onChangeButtonsReleased}
-                  key={i}
-                  onTouchStart={
-                    this.props.onTouchStartFunctions
-                      ? this.props.onTouchStartFunctions[choice - 1]
-                      : null
-                  }
-                  onTouchEnd={
-                    this.props.onTouchEndFunctions
-                      ? this.props.onTouchEndFunctions[choice - 1]
-                      : null
-                  }
-                />
-              ))}
-            </View>
+        </View>
+        <View
+          onLayout={this.onLayout}
+          ref={this.onKeyboardMounted}
+          collapsable={false}
+          onStartShouldSetResponder={this.onMove}
+          onResponderMove={this.onMove}
+          onResponderRelease={this.onRelease}
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+          }}
+        >
+          <View style={colContainerLeftStyle}>
+            <BrailleInput
+              label={1}
+              buttonIsTouched={this.state.testArray.indexOf(1) > -1}
+            />
+            <BrailleInput
+              label={2}
+              buttonIsTouched={this.state.testArray.indexOf(2) > -1}
+            />
+            <BrailleInput
+              label={3}
+              buttonIsTouched={this.state.testArray.indexOf(3) > -1}
+            />
+          </View>
+          <View
+            style={{
+              flex: 1,
+              backgroundColor: 'rgba(0,0,0,0.8)',
+              justifyContent: 'center',
+              padding: 30,
+            }}
+          >
+            <SpaceButton style={spaceButtonStyle} onChange={char => char} />
+          </View>
+          <View style={colContainerRightStyle}>
+            <BrailleInput
+              label={4}
+              buttonIsTouched={this.state.testArray.indexOf(4) > -1}
+            />
+            <BrailleInput
+              label={5}
+              buttonIsTouched={this.state.testArray.indexOf(5) > -1}
+            />
+            <BrailleInput
+              label={6}
+              buttonIsTouched={this.state.testArray.indexOf(6) > -1}
+            />
           </View>
         </View>
       </View>
