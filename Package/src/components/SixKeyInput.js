@@ -46,25 +46,84 @@ export default class SixKeyInput extends Component {
   _noArrayDuplicates = theArray =>
     theArray.filter((elem, pos, arr) => arr.indexOf(elem) === pos)
 
-  _onChangeButtonsReleased = finalArray => {
-    this.setState(
-      {
-        dotCharArray: this._noArrayDuplicates(finalArray.sort(this._sortArray)),
-      },
-      () => {
-        // let arrResult = this.state.dotCharArray
-        let brailleKey = this.state.dotCharArray.join('')
-        let brailleChar = unicodeBrailleCharacters[brailleKey].char
-        // console.log(newBrailleChar)
-        // let brailleChar = _findKey(brailleCharacters, (value, key) => {
-        //   return _isEqual(arrResult, value)
-        // })
-        if (brailleChar === undefined || brailleChar === null) {
-          brailleChar = ''
-        }
-        this.props.onChange(brailleChar)
-      }
+  onMove = ({ nativeEvent: { changedTouches } }) => {
+    const { width, height, x, y } = this.layout
+
+    console.log(
+      `in onMove():\n  width: ${width}\n  height: ${height}\n  x: ${x}\n  y: ${y}`
     )
+
+    let testArray = [...this.state.testArray]
+
+    for (let i = 0; i < changedTouches.length; i++) {
+      const { pageX, pageY } = changedTouches[i]
+
+      let xTouchSection = 0
+      let yTouchSection = 0
+
+      if (pageY - y > (height * 2) / 3) {
+        yTouchSection = 3
+      } else if (pageY - y > height * (1 / 3)) {
+        yTouchSection = 2
+      } else if (pageY > y) {
+        yTouchSection = 1
+      }
+
+      if (pageX - x > (width * 2) / 3) {
+        xTouchSection = 3
+      } else if (pageX - x > width * (1 / 3)) {
+        xTouchSection = 2
+      } else if (pageX > x) {
+        xTouchSection = 1
+      }
+
+      let btnTouchArray = xTouchSection.toString() + yTouchSection.toString()
+
+      switch (btnTouchArray) {
+        case '11':
+          testArray.push(1)
+          break
+        case '12':
+          testArray.push(2)
+          break
+        case '13':
+          testArray.push(3)
+          break
+        case '31':
+          testArray.push(4)
+          break
+        case '32':
+          testArray.push(5)
+          break
+        case '33':
+          testArray.push(6)
+          break
+        default:
+          break
+      }
+
+      testArray = this._noArrayDuplicates(testArray.sort(this._sortArray))
+
+      this.setState({ testArray, dotCharArray: testArray })
+    }
+
+    return true
+  }
+
+  onRelease = finalArray => {
+    this.setState({ testArray: [] }, () => {
+      // let arrResult = this.state.dotCharArray
+      let brailleKey = this.state.dotCharArray.join('')
+      let brailleChar = unicodeBrailleCharacters[brailleKey].char
+      // console.log(newBrailleChar)
+      // let brailleChar = _findKey(brailleCharacters, (value, key) => {
+      //   return _isEqual(arrResult, value)
+      // })
+      if (brailleChar === undefined || brailleChar === null) {
+        brailleChar = ''
+      }
+      this.props.onChange(brailleChar)
+    })
   }
 
   render() {
