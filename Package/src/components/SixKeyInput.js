@@ -233,6 +233,14 @@ export default class SixKeyInput extends Component {
   }
 }
 
+SixKeyInput.propTypes = {
+  onDone: PropTypes.func,
+  onDelete: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
+  onTouchStartFunctions: PropTypes.arrayOf(PropTypes.func),
+  onTouchEndFunctions: PropTypes.arrayOf(PropTypes.func),
+}
+
 const normalStyles = ResponsiveStylesheet.create({
   grandparentContainer: {
     position: 'absolute',
@@ -297,11 +305,3 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
     colContainerRight: {},
   },
 })
-
-SixKeyInput.propTypes = {
-  onDone: PropTypes.func,
-  onDelete: PropTypes.func,
-  onChange: PropTypes.func.isRequired,
-  onTouchStartFunctions: PropTypes.arrayOf(PropTypes.func),
-  onTouchEndFunctions: PropTypes.arrayOf(PropTypes.func),
-}
