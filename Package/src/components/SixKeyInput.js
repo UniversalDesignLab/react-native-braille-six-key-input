@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, View } from 'react-native'
+import { Dimensions, Text, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 import PropTypes from 'prop-types'
 
