@@ -49,7 +49,6 @@ export default class SixKeyInput extends Component {
   }
 
   render() {
-    const choices = [1, 2, 3, 4, 5, 6]
     const grandparentContainerStyle = [
       normalStyles.grandparentContainer,
       responsiveStyles.grandparentContainer,
@@ -57,10 +56,6 @@ export default class SixKeyInput extends Component {
     const parentContainerStyle = [
       normalStyles.parentContainer,
       responsiveStyles.parentContainer,
-    ]
-    const rowContainerStyle = [
-      normalStyles.rowContainer,
-      responsiveStyles.rowContainer,
     ]
     const spaceButtonStyle = [
       normalStyles.spaceButton,
