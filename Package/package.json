@@ -47,6 +47,7 @@
   },
   "peerDependencies": {
     "lodash": "^4.17.5",
+    "prop-types": "^15.6.0",
     "react": "^16.3.2",
     "react-native": "^0.54.2",
     "react-native-responsive-stylesheet": "^1.1.0"

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
+import PropTypes from 'prop-types'
 
 import { COLORS, ifIphoneX } from '../config'
 
@@ -26,6 +27,10 @@ const SpaceButton = props => {
       </View>
     </TouchableOpacity>
   )
+}
+
+SpaceButton.propTypes = {
+  onChange: PropTypes.func,
 }
 
 export default SpaceButton
