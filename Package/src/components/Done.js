@@ -1,6 +1,7 @@
 import React from 'react'
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
+import PropTypes from 'prop-types'
 
 import { COLORS } from '../config'
 
@@ -25,6 +26,12 @@ const Done = props => {
       </TouchableOpacity>
     </View>
   )
+}
+
+Done.propTypes = {
+  onDone: PropTypes.func,
+  onDelete: PropTypes.func,
+  onClear: PropTypes.func,
 }
 
 export default Done
