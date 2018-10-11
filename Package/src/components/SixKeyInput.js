@@ -11,10 +11,14 @@ import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
 import { unicodeBrailleCharacters } from '../brailleObj'
 
 const { width } = Dimensions.get('screen')
+
 export default class SixKeyInput extends Component {
   state = {
+    testArray: [],
     dotCharArray: [],
   }
+
+  layout = {}
 
   _sortArray = (a, b) => {
     return a - b
