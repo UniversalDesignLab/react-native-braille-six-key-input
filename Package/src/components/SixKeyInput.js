@@ -20,6 +20,25 @@ export default class SixKeyInput extends Component {
 
   layout = {}
 
+  _onLayout = ({ nativeEvent: { layout } }) => {
+    console.log('layout:', layout)
+    if (typeof this.layout.x === 'undefined') {
+      this.layout = layout
+      console.log('this.layout:', this.layout)
+    }
+  }
+
+  onKeyboardMounted = el => {
+    this.keyboard = el
+    setTimeout(() => {
+      el.measure((x, y, w, h, pX, pY) => {
+        console.log(`x: ${x}\ny: ${y}\nw: ${w}\npX: ${pX}\npY: ${pY}`)
+        this.layout.x = pX
+        this.layout.y = pY
+      })
+    })
+  }
+
   _sortArray = (a, b) => {
     return a - b
   }
