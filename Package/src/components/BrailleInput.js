@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
+import PropTypes from 'prop-types'
 
 import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
 import _parseInt from 'lodash/parseInt'
@@ -67,6 +68,12 @@ class BrailleInput extends Component {
       </View>
     )
   }
+}
+
+BrailleInput.propTypes = {
+  buttonIsTouched: PropTypes.bool,
+  label: PropTypes.number,
+  onChange: PropTypes.func,
 }
 
 export default BrailleInput
