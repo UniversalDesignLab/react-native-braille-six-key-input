@@ -135,7 +135,11 @@ export default class SixKeyInput extends Component {
       normalStyles.parentContainer,
       responsiveStyles.parentContainer,
     ]
-    const spaceButtonContainer = [
+    const rowContainerStyle = [
+      normalStyles.rowContainer,
+      responsiveStyles.rowContainer,
+    ]
+    const spaceButtonContainerStyle = [
       normalStyles.spaceButtonContainer,
       responsiveStyles.spaceButtonContainer,
     ]
@@ -171,10 +175,7 @@ export default class SixKeyInput extends Component {
           onStartShouldSetResponder={this.onMove}
           onResponderMove={this.onMove}
           onResponderRelease={this.onRelease}
-          style={{
-            flex: 1,
-            flexDirection: 'row',
-          }}
+          style={rowContainerStyle}
         >
           <View style={colContainerLeftStyle}>
             <BrailleInput
@@ -190,7 +191,7 @@ export default class SixKeyInput extends Component {
               buttonIsTouched={this.state.testArray.indexOf(3) > -1}
             />
           </View>
-          <View style={spaceButtonContainer}>
+          <View style={spaceButtonContainerStyle}>
             <SpaceButton
               style={spaceButtonStyle}
               onChange={this.props.onChange}
@@ -242,9 +243,16 @@ const normalStyles = ResponsiveStylesheet.create({
     justifyContent: 'center',
     padding: ifIPhone5s(8, 10),
   },
+  rowContainer: {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    flex: 1,
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   spaceButtonContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.8)',
     justifyContent: 'center',
     padding: 30,
   },
@@ -252,14 +260,12 @@ const normalStyles = ResponsiveStylesheet.create({
     minWidth: '25%',
   },
   colContainerLeft: {
-    backgroundColor: 'rgba(0,0,0,0.8)',
     flexDirection: 'column',
     justifyContent: 'space-around',
     // marginLeft: ifIphoneX(30, 10),
     marginBottom: 5,
   },
   colContainerRight: {
-    backgroundColor: 'rgba(0,0,0,0.8)',
     flexDirection: 'column',
     justifyContent: 'space-around',
     // marginRight: ifIphoneX(30, 10),
@@ -275,6 +281,7 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
     parentContainer: {
       padding: 20,
     },
+    rowContainer: {},
     spaceButtonContainer: {},
     spaceButton: {},
     colContainerLeft: {
@@ -287,6 +294,7 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
   portrait: {
     grandparentContainer: {},
     parentContainer: {},
+    rowContainer: {},
     spaceButtonContainer: {},
     spaceButton: {},
     colContainerLeft: {},
