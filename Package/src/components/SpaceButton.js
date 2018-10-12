@@ -43,7 +43,7 @@ const normalStyles = ResponsiveStylesheet.create({
     borderWidth: 3,
     minWidth: 115,
     maxWidth: 250,
-    padding: ifIphoneX(3, 7),
+    padding: ifIphoneX(3, 9),
   },
   spaceButtonText: {
     color: 'rgba(255,255,255,0.8)',
