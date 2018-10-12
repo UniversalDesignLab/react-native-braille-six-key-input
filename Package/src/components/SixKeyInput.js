@@ -135,6 +135,10 @@ export default class SixKeyInput extends Component {
       normalStyles.parentContainer,
       responsiveStyles.parentContainer,
     ]
+    const spaceButtonContainer = [
+      normalStyles.spaceButtonContainer,
+      responsiveStyles.spaceButtonContainer,
+    ]
     const spaceButtonStyle = [
       normalStyles.spaceButton,
       responsiveStyles.spaceButton,
@@ -186,14 +190,11 @@ export default class SixKeyInput extends Component {
               buttonIsTouched={this.state.testArray.indexOf(3) > -1}
             />
           </View>
-          <View
-            style={{
-              flex: 1,
-              backgroundColor: 'rgba(0,0,0,0.8)',
-              justifyContent: 'center',
-              padding: 30,
-            }}
-          >
+          <View style={spaceButtonContainer}>
+            <SpaceButton
+              style={spaceButtonStyle}
+              onChange={this.props.onChange}
+            />
             <SpaceButton style={spaceButtonStyle} onChange={char => char} />
           </View>
           <View style={colContainerRightStyle}>
@@ -235,29 +236,33 @@ const normalStyles = ResponsiveStylesheet.create({
     backgroundColor: 'rgba(0,0,0,0.8)',
     borderWidth: 2,
     borderTopColor: COLORS.black,
+    borderBottomWidth: 0,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    flex: 1,
     justifyContent: 'center',
     padding: ifIPhone5s(8, 10),
   },
-  rowContainer: {
-    alignContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  spaceButtonContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    justifyContent: 'center',
+    padding: 30,
   },
-  spaceButton: {},
+  spaceButton: {
+    minWidth: '25%',
+  },
   colContainerLeft: {
+    backgroundColor: 'rgba(0,0,0,0.8)',
     flexDirection: 'column',
     justifyContent: 'space-around',
-    marginLeft: ifIphoneX(30, 10),
+    // marginLeft: ifIphoneX(30, 10),
     marginBottom: 5,
   },
   colContainerRight: {
+    backgroundColor: 'rgba(0,0,0,0.8)',
     flexDirection: 'column',
     justifyContent: 'space-around',
-    marginRight: ifIphoneX(30, 10),
+    // marginRight: ifIphoneX(30, 10),
     marginBottom: 5,
   },
 })
@@ -270,7 +275,7 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
     parentContainer: {
       padding: 20,
     },
-    rowContainer: {},
+    spaceButtonContainer: {},
     spaceButton: {},
     colContainerLeft: {
       marginRight: width * 0.17,
@@ -282,7 +287,7 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
   portrait: {
     grandparentContainer: {},
     parentContainer: {},
-    rowContainer: {},
+    spaceButtonContainer: {},
     spaceButton: {},
     colContainerLeft: {},
     colContainerRight: {},
