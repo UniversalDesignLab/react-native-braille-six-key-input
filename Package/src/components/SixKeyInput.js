@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, Text, View } from 'react-native'
+import { Dimensions, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 import PropTypes from 'prop-types'
 
@@ -7,10 +7,12 @@ import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
 import Done from './Done'
 
-import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
+import { COLORS, ifIPhone5s } from '../config'
 import { unicodeBrailleCharacters } from '../brailleObj'
 
 const { width } = Dimensions.get('screen')
+
+// Android Galaxy Tab-E Size: height: 961.5022957581195 width: 600.9389348488247
 
 export default class SixKeyInput extends Component {
   state = {
