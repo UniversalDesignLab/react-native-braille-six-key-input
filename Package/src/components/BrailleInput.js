@@ -18,18 +18,18 @@ class BrailleInput extends Component {
   inputButtonStyles = ht => {
     return {
       borderRadius: ifIphoneX(
-        (ht * 0.14) / 2,
-        ifIPhone5s((ht * 0.144) / 2, (ht * 0.16) / 2)
+        (ht * 0.12) / 2,
+        ifIPhone5s((ht * 0.144) / 2, (ht * 0.17) / 2)
       ),
-      height: ifIphoneX(ht * 0.14, ifIPhone5s(ht * 0.144, ht * 0.16)),
-      width: ifIphoneX(ht * 0.14, ifIPhone5s(ht * 0.144, ht * 0.16)),
+      height: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.17)),
+      width: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.17)),
       marginVertical: ifIPhone5s(ht * 0.007, ht * 0.008),
     }
   }
 
   inputButtonTextStyle = ht => {
     return {
-      fontSize: ifIPhone5s(ht * 0.09, ht * 0.1),
+      fontSize: ifIPhone5s(ht * 0.09, ifIphoneX(ht * 0.08, ht * 0.12)),
     }
   }
 
@@ -82,6 +82,7 @@ const normalStyles = ResponsiveStylesheet.create({
     borderWidth: 3,
     justifyContent: 'center',
     marginHorizontal: 12,
+    marginVertical: 10,
   },
   inputButtonPressed: {
     backgroundColor: COLORS.blue,
@@ -94,8 +95,7 @@ const normalStyles = ResponsiveStylesheet.create({
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     inputButton: {
-      marginVertical: 0,
-      marginBottom: 3,
+      marginVertical: 15,
     },
     inputButtonPressed: {},
     inputButtonText: {},
