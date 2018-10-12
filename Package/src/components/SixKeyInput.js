@@ -40,8 +40,10 @@ export default class SixKeyInput extends Component {
         )
         this.layout.x = pX
         this.layout.y = pY
+        this.layout.width = w
+        this.layout.height = h
       })
-    })
+    }, 50)
   }
 
   _sortArray = (a, b) => {
@@ -196,7 +198,6 @@ export default class SixKeyInput extends Component {
               style={spaceButtonStyle}
               onChange={this.props.onChange}
             />
-            <SpaceButton style={spaceButtonStyle} onChange={char => char} />
           </View>
           <View style={colContainerRightStyle}>
             <BrailleInput
