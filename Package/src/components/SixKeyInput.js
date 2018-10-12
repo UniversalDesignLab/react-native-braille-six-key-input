@@ -22,11 +22,12 @@ export default class SixKeyInput extends Component {
 
   layout = {}
 
+  // Need to look at why this is not firing & displaying its console.log()'s.
   _onLayout = ({ nativeEvent: { layout } }) => {
-    console.log('layout:', layout)
+    // console.log('layout:', layout)
     if (typeof this.layout.x === 'undefined') {
       this.layout = layout
-      console.log('this.layout:', this.layout)
+      // console.log('this.layout:', this.layout)
     }
   }
 
@@ -34,7 +35,9 @@ export default class SixKeyInput extends Component {
     this.keyboard = el
     setTimeout(() => {
       el.measure((x, y, w, h, pX, pY) => {
-        console.log(`x: ${x}\ny: ${y}\nw: ${w}\npX: ${pX}\npY: ${pY}`)
+        console.log(
+          `in ref onKeyboardMounted() measure:\nx: ${x}\ny: ${y}\nw: ${w}\nh: ${h}\npX: ${pX}\npY: ${pY}`
+        )
         this.layout.x = pX
         this.layout.y = pY
       })
@@ -114,13 +117,8 @@ export default class SixKeyInput extends Component {
 
   onRelease = finalArray => {
     this.setState({ testArray: [] }, () => {
-      // let arrResult = this.state.dotCharArray
       let brailleKey = this.state.dotCharArray.join('')
       let brailleChar = unicodeBrailleCharacters[brailleKey].char
-      // console.log(newBrailleChar)
-      // let brailleChar = _findKey(brailleCharacters, (value, key) => {
-      //   return _isEqual(arrResult, value)
-      // })
       if (brailleChar === undefined || brailleChar === null) {
         brailleChar = ''
       }
@@ -149,6 +147,8 @@ export default class SixKeyInput extends Component {
       normalStyles.colContainerRight,
       responsiveStyles.colContainerRight,
     ]
+
+    // console.log(`height: ${height}\nwidth: ${width}`)
 
     return (
       <View style={grandparentContainerStyle}>
