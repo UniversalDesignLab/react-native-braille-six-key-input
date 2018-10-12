@@ -7,7 +7,6 @@ import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
 
 const { height } = Dimensions.get('screen')
 
-let counter = 0
 let finalArray = []
 
 class BrailleInput extends Component {
@@ -67,7 +66,7 @@ const normalStyles = ResponsiveStylesheet.create({
     width: ifIphoneX(height * 0.14, ifIPhone5s(height * 0.144, height * 0.16)),
     justifyContent: 'center',
     marginVertical: ifIPhone5s(height * 0.007, height * 0.008),
-    marginHorizontal: 20,
+    marginHorizontal: 12,
   },
   inputButtonPressed: {
     backgroundColor: COLORS.blue,
