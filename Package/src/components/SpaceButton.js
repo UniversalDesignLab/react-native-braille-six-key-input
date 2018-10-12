@@ -41,6 +41,7 @@ const normalStyles = ResponsiveStylesheet.create({
     borderColor: COLORS.grey,
     borderRadius: 10,
     borderWidth: 3,
+    maxWidth: 250,
     paddingHorizontal: ifIphoneX(3, 5),
     paddingVertical: ifIphoneX(3, 5),
   },
