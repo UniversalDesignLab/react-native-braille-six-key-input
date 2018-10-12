@@ -121,6 +121,7 @@ export default class SixKeyInput extends Component {
     this.setState({ testArray: [] }, () => {
       let brailleKey = this.state.dotCharArray.join('')
       let brailleChar = unicodeBrailleCharacters[brailleKey].char
+      console.log(`brailleKey: ${brailleKey}\nbrailleChar: ${brailleChar}`)
       if (brailleChar === undefined || brailleChar === null) {
         brailleChar = ''
       }
