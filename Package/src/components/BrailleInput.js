@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
 
-const { height } = Dimensions.get('screen')
+// const { height } = Dimensions.get('screen')
 
 let finalArray = []
 
@@ -15,9 +15,30 @@ class BrailleInput extends Component {
     finalArray = []
   }
 
+  inputButtonStyles = ht => {
+    return {
+      borderRadius: ifIphoneX(
+        (ht * 0.14) / 2,
+        ifIPhone5s((ht * 0.144) / 2, (ht * 0.16) / 2)
+      ),
+      height: ifIphoneX(ht * 0.14, ifIPhone5s(ht * 0.144, ht * 0.16)),
+      width: ifIphoneX(ht * 0.14, ifIPhone5s(ht * 0.144, ht * 0.16)),
+      marginVertical: ifIPhone5s(ht * 0.007, ht * 0.008),
+    }
+  }
+
+  inputButtonTextStyle = ht => {
+    return {
+      fontSize: ifIPhone5s(ht * 0.09, ht * 0.1),
+    }
+  }
+
   render() {
+    const { height } = Dimensions.get('screen')
+
     const inputButtonStyle = [
       normalStyles.inputButton,
+      this.inputButtonStyles(height),
       responsiveStyles.inputButton,
     ]
 
@@ -28,6 +49,7 @@ class BrailleInput extends Component {
 
     const inputButtonTextStyle = [
       normalStyles.inputButtonText,
+      this.inputButtonTextStyle(height),
       responsiveStyles.inputButtonText,
     ]
 
@@ -57,15 +79,8 @@ const normalStyles = ResponsiveStylesheet.create({
   inputButton: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: ifIphoneX(
-      (height * 0.14) / 2,
-      ifIPhone5s((height * 0.144) / 2, (height * 0.16) / 2)
-    ),
     borderWidth: 3,
-    height: ifIphoneX(height * 0.14, ifIPhone5s(height * 0.144, height * 0.16)),
-    width: ifIphoneX(height * 0.14, ifIPhone5s(height * 0.144, height * 0.16)),
     justifyContent: 'center',
-    marginVertical: ifIPhone5s(height * 0.007, height * 0.008),
     marginHorizontal: 12,
   },
   inputButtonPressed: {
@@ -73,23 +88,17 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   inputButtonText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: ifIPhone5s(height * 0.09, height * 0.1),
   },
 })
 
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     inputButton: {
-      borderRadius: (height * 0.22) / 2,
-      height: height * 0.22,
-      width: height * 0.22,
       marginVertical: 0,
       marginBottom: 3,
     },
     inputButtonPressed: {},
-    inputButtonText: {
-      fontSize: height * 0.135,
-    },
+    inputButtonText: {},
   },
   portrait: {
     inputButton: {},
