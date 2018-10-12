@@ -37,7 +37,7 @@ export default SpaceButton
 
 const normalStyles = ResponsiveStylesheet.create({
   spaceButton: {
-    alignItems: 'flex-end',
+    alignItems: 'center',
     borderColor: COLORS.grey,
     borderRadius: 10,
     borderWidth: 3,
