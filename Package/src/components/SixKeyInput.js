@@ -121,9 +121,11 @@ export default class SixKeyInput extends Component {
 
   onRelease = finalArray => {
     this.setState({ testArray: [] }, () => {
+      if (this.state.dotCharArray.length === 0) {
+        return
+      }
       let brailleKey = this.state.dotCharArray.join('')
       let brailleChar = unicodeBrailleCharacters[brailleKey].char
-      console.log(`brailleKey: ${brailleKey}\nbrailleChar: ${brailleChar}`)
       if (brailleChar === undefined || brailleChar === null) {
         brailleChar = ''
       }
@@ -169,13 +171,13 @@ export default class SixKeyInput extends Component {
         <View style={parentContainerStyle}>
           {/* Done has an "onDone" prop that will be handled in the app where you in import this package. */}
           <Done
-            onDone={this.props.onDone}
-            onClear={this.props.onClear}
             onDelete={this.props.onDelete}
+            onClear={this.props.onClear}
+            onDone={this.props.onDone}
           />
         </View>
         <View
-          onLayout={this.onLayout}
+          onLayout={this._onLayout}
           ref={this.onKeyboardMounted}
           collapsable={false}
           onStartShouldSetResponder={this.onMove}
@@ -198,10 +200,7 @@ export default class SixKeyInput extends Component {
             />
           </View>
           <View style={spaceButtonContainerStyle}>
-            <SpaceButton
-              style={spaceButtonStyle}
-              onChange={this.props.onChange}
-            />
+            <SpaceButton onChange={this.props.onChange} />
           </View>
           <View style={colContainerRightStyle}>
             <BrailleInput
