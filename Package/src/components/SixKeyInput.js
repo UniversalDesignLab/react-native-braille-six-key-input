@@ -136,26 +136,27 @@ export default class SixKeyInput extends Component {
       normalStyles.grandparentContainer,
       responsiveStyles.grandparentContainer,
     ]
+
     const parentContainerStyle = [
       normalStyles.parentContainer,
       responsiveStyles.parentContainer,
     ]
+
     const rowContainerStyle = [
       normalStyles.rowContainer,
       responsiveStyles.rowContainer,
     ]
+
     const spaceButtonContainerStyle = [
       normalStyles.spaceButtonContainer,
       responsiveStyles.spaceButtonContainer,
     ]
-    const spaceButtonStyle = [
-      normalStyles.spaceButton,
-      responsiveStyles.spaceButton,
-    ]
+
     const colContainerLeftStyle = [
       normalStyles.colContainerLeft,
       responsiveStyles.colContainerLeft,
     ]
+
     const colContainerRightStyle = [
       normalStyles.colContainerRight,
       responsiveStyles.colContainerRight,
