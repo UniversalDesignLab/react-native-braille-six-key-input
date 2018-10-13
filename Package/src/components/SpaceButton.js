@@ -1,8 +1,9 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
+import PropTypes from 'prop-types'
 
-import { COLORS, ifIphoneX } from '../config'
+import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
 
 const SpaceButton = props => {
   const spaceButtonStyle = [
@@ -28,20 +29,26 @@ const SpaceButton = props => {
   )
 }
 
+SpaceButton.propTypes = {
+  onChange: PropTypes.func,
+}
+
 export default SpaceButton
 
 const normalStyles = ResponsiveStylesheet.create({
   spaceButton: {
-    alignItems: 'flex-end',
+    // alignItems: 'center',
     borderColor: COLORS.grey,
     borderRadius: 10,
     borderWidth: 3,
-    paddingHorizontal: ifIphoneX(3, 5),
-    paddingVertical: ifIphoneX(3, 5),
+    minWidth: 115,
+    maxWidth: 250,
+    padding: 9,
   },
   spaceButtonText: {
     color: 'rgba(255,255,255,0.8)',
-    fontSize: 30,
+    fontSize: ifIPhone5s(28, ifIphoneX(35, 60)),
+    textAlign: 'center',
   },
 })
 

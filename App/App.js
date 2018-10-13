@@ -11,12 +11,12 @@ if (typeof global.self === 'undefined') {
 }
 
 const createOnTouchStartFn = i => () => {
-    console.log("Pressed", i);
-  }
+  console.log('Pressed', i)
+}
 
-  const createOnTouchEndFn = i => () => {
-    console.log("Released", i);
-  }
+const createOnTouchEndFn = i => () => {
+  console.log('Released', i)
+}
 
 class App extends Component {
   state = {
@@ -25,6 +25,7 @@ class App extends Component {
 
   _onChangeHandler = value => {
     this.setState({ value: this.state.value + value })
+    console.log(`${value} Pressed.`)
   }
 
   _clearResultValue = () => {
@@ -44,8 +45,9 @@ class App extends Component {
         <SixKeyInput
           onChange={this._onChangeHandler}
           onDelete={this._onDelete}
-          onTouchStartFunctions={[1,2,3,4,5,6].map(createOnTouchStartFn)}
-          onTouchEndFunctions={[1,2,3,4,5,6].map(createOnTouchEndFn)}
+          onClear={this._clearResultValue}
+          onTouchStartFunctions={[1, 2, 3, 4, 5, 6].map(createOnTouchStartFn)}
+          onTouchEndFunctions={[1, 2, 3, 4, 5, 6].map(createOnTouchEndFn)}
         />
       </View>
     )

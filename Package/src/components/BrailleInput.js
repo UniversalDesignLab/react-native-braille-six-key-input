@@ -1,29 +1,44 @@
 import React, { Component } from 'react'
 import { Dimensions, Text, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
+import PropTypes from 'prop-types'
 
 import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
-import _parseInt from 'lodash/parseInt'
 
-const { height } = Dimensions.get('screen')
+// const { height } = Dimensions.get('screen')
 
-let counter = 0
 let finalArray = []
 
 class BrailleInput extends Component {
-  state = {
-    buttonIsTouched: false,
-  }
-
   _onEndAllTouches = () => {
     this.props.onChange(finalArray)
-    counter = 0
     finalArray = []
   }
 
+  inputButtonStyles = ht => {
+    return {
+      borderRadius: ifIphoneX(
+        (ht * 0.12) / 2,
+        ifIPhone5s((ht * 0.144) / 2, (ht * 0.17) / 2)
+      ),
+      height: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.17)),
+      width: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.17)),
+      marginVertical: ifIPhone5s(ht * 0.007, ht * 0.008),
+    }
+  }
+
+  inputButtonTextStyle = ht => {
+    return {
+      fontSize: ifIPhone5s(ht * 0.09, ifIphoneX(ht * 0.08, ht * 0.12)),
+    }
+  }
+
   render() {
+    const { height } = Dimensions.get('screen')
+
     const inputButtonStyle = [
       normalStyles.inputButton,
+      this.inputButtonStyles(height),
       responsiveStyles.inputButton,
     ]
 
@@ -34,39 +49,28 @@ class BrailleInput extends Component {
 
     const inputButtonTextStyle = [
       normalStyles.inputButtonText,
+      this.inputButtonTextStyle(height),
       responsiveStyles.inputButtonText,
     ]
 
     return (
       <View
         style={
-          this.state.buttonIsTouched
+          this.props.buttonIsTouched
             ? [inputButtonStyle, inputButtonPressedStyle]
             : inputButtonStyle
         }
-        onTouchStart={() => {
-          if (this.props.onTouchStart) {
-            this.props.onTouchStart()
-          }
-          this.setState({ buttonIsTouched: true })
-          counter++
-          finalArray.push(_parseInt(this.props.label))
-        }}
-        onTouchEnd={() => {
-          if (this.props.onTouchEnd) {
-            this.props.onTouchEnd()
-          }
-          this.setState({ buttonIsTouched: false })
-          counter--
-          if (counter === 0) {
-            this._onEndAllTouches()
-          }
-        }}
       >
         <Text style={inputButtonTextStyle}>{this.props.label}</Text>
       </View>
     )
   }
+}
+
+BrailleInput.propTypes = {
+  buttonIsTouched: PropTypes.bool,
+  label: PropTypes.number,
+  onChange: PropTypes.func,
 }
 
 export default BrailleInput
@@ -75,40 +79,26 @@ const normalStyles = ResponsiveStylesheet.create({
   inputButton: {
     alignItems: 'center',
     borderColor: COLORS.grey,
-    borderRadius: ifIphoneX(
-      (height * 0.14) / 2,
-      ifIPhone5s((height * 0.144) / 2, (height * 0.16) / 2)
-    ),
     borderWidth: 3,
-    height: ifIphoneX(height * 0.14, ifIPhone5s(height * 0.144, height * 0.16)),
-    width: ifIphoneX(height * 0.14, ifIPhone5s(height * 0.144, height * 0.16)),
     justifyContent: 'center',
-    marginVertical: ifIPhone5s(height * 0.007, height * 0.008),
-    marginLeft: 10,
-    marginRight: 10,
+    marginHorizontal: 12,
+    marginVertical: 10,
   },
   inputButtonPressed: {
     backgroundColor: COLORS.blue,
   },
   inputButtonText: {
     color: 'rgba(255,255,255,0.7)',
-    fontSize: ifIPhone5s(height * 0.09, height * 0.1),
   },
 })
 
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     inputButton: {
-      borderRadius: (height * 0.22) / 2,
-      height: height * 0.22,
-      width: height * 0.22,
-      marginVertical: 0,
-      marginBottom: 3,
+      marginVertical: 15,
     },
     inputButtonPressed: {},
-    inputButtonText: {
-      fontSize: height * 0.135,
-    },
+    inputButtonText: {},
   },
   portrait: {
     inputButton: {},
