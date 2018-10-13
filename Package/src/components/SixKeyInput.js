@@ -233,47 +233,36 @@ SixKeyInput.propTypes = {
 
 const normalStyles = ResponsiveStylesheet.create({
   grandparentContainer: {
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     position: 'absolute',
     bottom: 0,
     width: '100%',
   },
   parentContainer: {
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.8)',
-    borderWidth: 2,
-    borderTopColor: COLORS.black,
-    borderBottomWidth: 0,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    justifyContent: 'center',
-    padding: ifIPhone5s(8, 10),
+    padding: 20,
+    paddingBottom: 10,
   },
   rowContainer: {
-    backgroundColor: 'rgba(0,0,0,0.8)',
+    alignItems: 'center',
     flex: 1,
     flexDirection: 'row',
-    alignContent: 'center',
     justifyContent: 'space-between',
-    alignItems: 'center',
   },
   spaceButtonContainer: {
+    alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-    padding: 30,
-  },
-  spaceButton: {
-    minWidth: '25%',
   },
   colContainerLeft: {
     flexDirection: 'column',
     justifyContent: 'space-around',
-    // marginLeft: ifIphoneX(30, 10),
     marginBottom: 5,
   },
   colContainerRight: {
     flexDirection: 'column',
     justifyContent: 'space-around',
-    // marginRight: ifIphoneX(30, 10),
     marginBottom: 5,
   },
 })
@@ -281,27 +270,19 @@ const normalStyles = ResponsiveStylesheet.create({
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     grandparentContainer: {
-      height: '78%',
+      height: '65%',
     },
-    parentContainer: {
-      padding: 20,
-    },
+    parentContainer: {},
     rowContainer: {},
     spaceButtonContainer: {},
-    spaceButton: {},
-    colContainerLeft: {
-      marginRight: width * 0.17,
-    },
-    colContainerRight: {
-      marginLeft: width * 0.17,
-    },
+    colContainerLeft: {},
+    colContainerRight: {},
   },
   portrait: {
     grandparentContainer: {},
     parentContainer: {},
     rowContainer: {},
     spaceButtonContainer: {},
-    spaceButton: {},
     colContainerLeft: {},
     colContainerRight: {},
   },
