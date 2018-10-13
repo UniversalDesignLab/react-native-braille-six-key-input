@@ -56,11 +56,11 @@ export default class SixKeyInput extends Component {
     theArray.filter((elem, pos, arr) => arr.indexOf(elem) === pos)
 
   onMove = ({ nativeEvent: { changedTouches } }) => {
-    const { width, height, x, y } = this.layout
+    const { width, height, x, y } = this.state.layout
 
-    console.log(
-      `in onMove():\n  width: ${width}\n  height: ${height}\n  x: ${x}\n  y: ${y}`
-    )
+    // console.log(
+    //   `in onMove():\n  width: ${width}\n  height: ${height}\n  x: ${x}\n  y: ${y}`
+    // )
 
     let testArray = [...this.state.testArray]
 
