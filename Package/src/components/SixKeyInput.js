@@ -15,6 +15,7 @@ export default class SixKeyInput extends Component {
   state = {
     testArray: [],
     dotCharArray: [],
+    layout: {},
   }
 
   layout = {}
