@@ -29,7 +29,7 @@ class BrailleInput extends Component {
 
   inputButtonTextStyle = ht => {
     return {
-      fontSize: ifIphoneX(ht * 0.07, ifIPhone5s(ht * 0.09, ht * 0.8)),
+      fontSize: ifIphoneX(ht * 0.07, ifIPhone5s(ht * 0.09, ht * 0.08)),
     }
   }
 
