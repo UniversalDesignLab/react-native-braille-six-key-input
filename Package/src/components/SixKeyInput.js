@@ -18,6 +18,12 @@ export default class SixKeyInput extends Component {
     layout: {},
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.isVisible && !prevProps.isVisible && this.keyboard) {
+      this.keyboard.measure(this._setLayout)
+    }
+  }
+
   _setLayout = (x, y, w, h, pX, pY) => {
     console.log(
       `in ref onKeyboardMounted() measure:\nx: ${x}\ny: ${y}\nw: ${w}\nh: ${h}\npX: ${pX}\npY: ${pY}`
