@@ -25,9 +25,9 @@ export default class SixKeyInput extends Component {
   }
 
   _setLayout = (x, y, w, h, pX, pY) => {
-    console.log(
-      `in ref onKeyboardMounted() measure:\nx: ${x}\ny: ${y}\nw: ${w}\nh: ${h}\npX: ${pX}\npY: ${pY}`
-    )
+    // console.log(
+    //   `in ref onKeyboardMounted() measure:\nx: ${x}\ny: ${y}\nw: ${w}\nh: ${h}\npX: ${pX}\npY: ${pY}`
+    // )
     this.setState({
       layout: {
         x: pX,
@@ -40,7 +40,7 @@ export default class SixKeyInput extends Component {
 
   // Need to look at why this is not firing & displaying its console.log()'s.
   _onLayout = ({ nativeEvent: { layout } }) => {
-    console.log('layout:', layout)
+    // console.log('layout:', layout)
     if (!this.keyboard) {
       return
     }

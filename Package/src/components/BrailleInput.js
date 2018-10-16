@@ -19,17 +19,17 @@ class BrailleInput extends Component {
     return {
       borderRadius: ifIphoneX(
         (ht * 0.12) / 2,
-        ifIPhone5s((ht * 0.144) / 2, (ht * 0.17) / 2)
+        ifIPhone5s((ht * 0.144) / 2, (ht * 0.14) / 2)
       ),
-      height: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.17)),
-      width: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.17)),
+      height: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.14)),
+      width: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.14)),
       marginVertical: ifIPhone5s(ht * 0.007, ht * 0.008),
     }
   }
 
   inputButtonTextStyle = ht => {
     return {
-      fontSize: ifIPhone5s(ht * 0.09, ifIphoneX(ht * 0.08, ht * 0.12)),
+      fontSize: ifIphoneX(ht * 0.07, ifIPhone5s(ht * 0.09, ht * 0.8)),
     }
   }
 
@@ -61,7 +61,9 @@ class BrailleInput extends Component {
             : inputButtonStyle
         }
       >
-        <Text style={inputButtonTextStyle}>{this.props.label}</Text>
+        <Text style={inputButtonTextStyle} allowFontScaling={false}>
+          {this.props.label}
+        </Text>
       </View>
     )
   }

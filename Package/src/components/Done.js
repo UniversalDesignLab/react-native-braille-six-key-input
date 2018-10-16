@@ -16,13 +16,19 @@ const Done = props => {
   return (
     <View style={containerStyle}>
       <TouchableOpacity onPress={props.onDelete}>
-        <Text style={deleteTextStyle}>Delete</Text>
+        <Text style={deleteTextStyle} allowFontScaling={false}>
+          Delete
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={props.onClear}>
-        <Text style={clearTextStyle}>Clear</Text>
+        <Text style={clearTextStyle} allowFontScaling={false}>
+          Clear
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={props.onDone}>
-        <Text style={doneTextStyle}>Done</Text>
+        <Text style={doneTextStyle} allowFontScaling={false}>
+          Done
+        </Text>
       </TouchableOpacity>
     </View>
   )
@@ -39,7 +45,6 @@ export default Done
 const normalStyles = ResponsiveStylesheet.create({
   container: {
     flexDirection: 'row',
-    // marginBottom: height * 0.01,
     justifyContent: 'space-between',
     zIndex: 1,
   },
@@ -56,20 +61,15 @@ const normalStyles = ResponsiveStylesheet.create({
   doneText: {
     color: COLORS.blue,
     fontSize: height * 0.04,
-    // marginLeft: width * 0.25,
-    // marginRight: 60,
     marginTop: 5,
   },
 })
 
 const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
-    container: {
-      // marginBottom: height * 0.03,
-    },
+    container: {},
     deleteText: {
       fontSize: height * 0.04,
-      // marginRight: width * 0.4,
     },
     clearText: {
       fontSize: height * 0.04,
@@ -77,17 +77,12 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
     },
     doneText: {
       fontSize: height * 0.04,
-      // marginLeft: width * 0.4,
     },
   },
   portrait: {
     container: {},
-    deleteTextStyle: {
-      // marginLeft: 25,
-    },
+    deleteTextStyle: {},
     clearText: {},
-    doneTextStyle: {
-      // marginRight: 25,
-    },
+    doneTextStyle: {},
   },
 })
