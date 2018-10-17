@@ -49,7 +49,7 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   spaceButtonText: {
     color: 'rgba(255,255,255,0.8)',
-    fontSize: ifIPhone5s(30, 36),
+    fontSize: ifIPhone5s(30, 35),
     textAlign: 'center',
   },
 })
