@@ -23,6 +23,16 @@ export const isIphoneX = () => {
   )
 }
 
+export const isIphoneXSMax = () => {
+  let dimen = Dimensions.get('window')
+  return (
+    Platform.OS === 'ios' &&
+    !Platform.isPad &&
+    !Platform.isTVOS &&
+    (dimen.height === 896 || dimen.width === 896)
+  )
+}
+
 export const isIphone5s = () => {
   let height = Dimensions.get('screen').height
   return (
@@ -31,6 +41,14 @@ export const isIphone5s = () => {
     !Platform.isTVOS &&
     (height === 568 || height === 568)
   )
+}
+
+export const ifIphoneXSMax = (iphoneXSMaxStyle, regularStyle) => {
+  if (isIphoneXSMax()) {
+    return iphoneXSMaxStyle
+  } else {
+    return regularStyle
+  }
 }
 
 export const ifIphoneX = (iphoneXStyle, regularStyle) => {
