@@ -3,7 +3,7 @@ import { Dimensions, Text, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 import PropTypes from 'prop-types'
 
-import { COLORS, ifIphoneX, ifIPhone5s } from '../config'
+import { COLORS, ifIphoneXSMax, ifIphoneX, ifIPhone5s } from '../config'
 
 // const { height } = Dimensions.get('screen')
 
@@ -17,12 +17,21 @@ class BrailleInput extends Component {
 
   inputButtonStyles = ht => {
     return {
-      borderRadius: ifIphoneX(
-        (ht * 0.12) / 2,
-        ifIPhone5s((ht * 0.144) / 2, (ht * 0.14) / 2)
+      borderRadius: ifIphoneXSMax(
+        (ht * 0.115) / 2,
+        ifIphoneX(
+          (ht * 0.12) / 2,
+          ifIPhone5s((ht * 0.144) / 2, (ht * 0.14) / 2)
+        )
       ),
-      height: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.14)),
-      width: ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.14)),
+      height: ifIphoneXSMax(
+        ht * 0.115,
+        ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.14))
+      ),
+      width: ifIphoneXSMax(
+        ht * 0.115,
+        ifIphoneX(ht * 0.12, ifIPhone5s(ht * 0.144, ht * 0.14))
+      ),
       marginVertical: ifIPhone5s(ht * 0.007, ht * 0.008),
     }
   }
