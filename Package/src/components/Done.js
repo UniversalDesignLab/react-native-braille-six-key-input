@@ -3,7 +3,7 @@ import { Dimensions, Text, TouchableOpacity, View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 import PropTypes from 'prop-types'
 
-import { COLORS } from '../config'
+import { COLORS, ifIphoneX, ifIphoneXSMax } from '../config'
 
 const { height } = Dimensions.get('window')
 
@@ -50,17 +50,26 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   deleteText: {
     color: COLORS.blue,
-    fontSize: height * 0.04,
+    fontSize: ifIphoneXSMax(
+      height * 0.035,
+      ifIphoneX(height * 0.0385, height * 0.04)
+    ),
     marginTop: 5,
   },
   clearText: {
     color: COLORS.blue,
-    fontSize: height * 0.04,
+    fontSize: ifIphoneXSMax(
+      height * 0.035,
+      ifIphoneX(height * 0.0385, height * 0.04)
+    ),
     marginTop: 5,
   },
   doneText: {
     color: COLORS.blue,
-    fontSize: height * 0.04,
+    fontSize: ifIphoneXSMax(
+      height * 0.035,
+      ifIphoneX(height * 0.0385, height * 0.04)
+    ),
     marginTop: 5,
   },
 })
@@ -69,14 +78,23 @@ const responsiveStyles = ResponsiveStylesheet.createOriented({
   landscape: {
     container: {},
     deleteText: {
-      fontSize: height * 0.04,
+      fontSize: ifIphoneXSMax(
+        height * 0.035,
+        ifIphoneX(height * 0.0385, height * 0.04)
+      ),
     },
     clearText: {
-      fontSize: height * 0.04,
+      fontSize: ifIphoneXSMax(
+        height * 0.035,
+        ifIphoneX(height * 0.0385, height * 0.04)
+      ),
       textAlign: 'center',
     },
     doneText: {
-      fontSize: height * 0.04,
+      fontSize: ifIphoneXSMax(
+        height * 0.035,
+        ifIphoneX(height * 0.0385, height * 0.04)
+      ),
     },
   },
   portrait: {
