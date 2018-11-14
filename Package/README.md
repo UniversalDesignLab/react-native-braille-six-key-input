@@ -4,7 +4,7 @@
 
 _To have this render your input as Braille, you will need to import a Braille font, like the [SimBraille Font](http://www.brl.org/simbraille.html 'BRL: Braille Through Remote Learning Web Site, SimBraille Font Page.') or the AppleBraille font that comes with Apple Mac OS computers, into your Project._
 
-![The react-native-braill-six-key-input NPM Package in action in a Gif image.](https://i.imgur.com/s7PnhTN.gif)
+<img src="https://i.imgur.com/s7PnhTN.gif" width="200" alt="The react-native-braill-six-key-input NPM Package in action in a Gif image."></img>
 
 **To Install**:
 
