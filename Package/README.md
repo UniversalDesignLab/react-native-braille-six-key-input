@@ -24,18 +24,7 @@ After installing package, make sure to install all NPM dependencies for your pro
 $ npm i
 ```
 
-We have also included a sample App running with this Six-Key Input, to see that, `cd` into the App directory and run `npm i` there, then `npm start`, and it will run it in Expo for you (you will need to install [Expo](https://expo.io/) on your Smart Phone to see it run) —
-
-```bash
-$ cd App
-$ npm i
-...
-$ npm start
-```
-
-To have the App run, you need to follow **_both_** steps above for running `npm i` in both the Package _and_ the App directories.
-
-Once the app is running, try various key combinations for Braille letters you can find at [this Braille web site](https://www.pharmabraille.com/pharmaceutical-braille/the-braille-alphabet/).
+We also have a React Native [Expo](https://expo.io/ 'The Expo') Runtime App which you can use to see the package in action as part of our [GitHub repository](https://github.com/UniversalDesignLab/react-native-braille-six-key-input 'The GitHub repository for the react-native-braille-six-key-input NPM package') for this NPM package.
 
 ### Coming in the future —
 
