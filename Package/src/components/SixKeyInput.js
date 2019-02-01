@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import ResponsiveStylesheet from 'react-native-responsive-stylesheet'
 import PropTypes from 'prop-types'
+import converter from 'ueb-unicode-braille-to-ascii'
 
 import BrailleInput from './BrailleInput'
 import SpaceButton from './SpaceButton'
@@ -131,10 +132,12 @@ export default class SixKeyInput extends Component {
         return
       }
       let brailleKey = this.state.dotCharArray.join('')
-      let brailleChar = unicodeBrailleCharacters[brailleKey].char
-      if (brailleChar === undefined || brailleChar === null) {
-        brailleChar = ''
+      let unicodeChar = unicodeBrailleCharacters[brailleKey].char
+      if (unicodeChar === undefined || unicodeChar === null) {
+        unicodeChar = ''
       }
+
+      const brailleChar = this.props.asciiMode ? converter.unicodeToASCII(unicodeChar) : unicodeChar
       this.props.onChange(brailleChar)
     })
   }
@@ -232,6 +235,7 @@ SixKeyInput.propTypes = {
   onDone: PropTypes.func,
   onDelete: PropTypes.func,
   onChange: PropTypes.func.isRequired,
+  asciiMode: PropTypes.bool,
   onTouchStartFunctions: PropTypes.arrayOf(PropTypes.func),
   onTouchEndFunctions: PropTypes.arrayOf(PropTypes.func),
 }

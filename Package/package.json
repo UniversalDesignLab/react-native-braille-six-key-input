@@ -54,7 +54,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.5",
+    "prop-types": "^15.6.0",
     "react-native-responsive-stylesheet": "^1.1.0",
-    "prop-types": "^15.6.0"
+    "ueb-unicode-braille-to-ascii": "^1.0.4"
   }
 }
