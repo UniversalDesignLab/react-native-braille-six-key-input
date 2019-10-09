@@ -137,7 +137,9 @@ export default class SixKeyInput extends Component {
         unicodeChar = ''
       }
 
-      const brailleChar = this.props.asciiMode ? converter.unicodeToASCII(unicodeChar) : unicodeChar
+      const brailleChar = this.props.asciiMode
+        ? converter.unicodeToASCII(unicodeChar)
+        : unicodeChar
       this.props.onChange(brailleChar)
     })
   }
@@ -145,6 +147,9 @@ export default class SixKeyInput extends Component {
   render() {
     const grandparentContainerStyle = [
       normalStyles.grandparentContainer,
+      this.props.removePositionAbsolute
+        ? null
+        : { position: 'absolute', bottom: 0 },
       responsiveStyles.grandparentContainer,
     ]
 
@@ -245,8 +250,6 @@ const normalStyles = ResponsiveStylesheet.create({
     backgroundColor: 'rgba(0,0,0,0.8)',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    position: 'absolute',
-    bottom: 0,
     width: '100%',
   },
   parentContainer: {
