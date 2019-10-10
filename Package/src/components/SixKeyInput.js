@@ -257,8 +257,6 @@ const normalStyles = ResponsiveStylesheet.create({
     paddingBottom: 10,
   },
   rowContainer: {
-    alignItems: 'center',
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -269,12 +267,10 @@ const normalStyles = ResponsiveStylesheet.create({
   },
   colContainerLeft: {
     flexDirection: 'column',
-    justifyContent: 'space-around',
     marginBottom: 5,
   },
   colContainerRight: {
     flexDirection: 'column',
-    justifyContent: 'space-around',
     marginBottom: 5,
   },
 })
