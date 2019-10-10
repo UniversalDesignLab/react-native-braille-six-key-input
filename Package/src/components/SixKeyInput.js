@@ -51,7 +51,8 @@ export default class SixKeyInput extends Component {
   onKeyboardMounted = el => {
     this.keyboard = el
     setTimeout(() => {
-      el.measure(this._setLayout)
+      // If the component closes this timeout gets called with no el!
+      if (el) el.measure(this._setLayout)
     }, 50)
   }
 
